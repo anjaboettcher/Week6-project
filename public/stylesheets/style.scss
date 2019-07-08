@@ -1,34 +1,32 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html,
+body,
+header,
+.view {
   height: 100%;
 }
 
-a {
-  color: #00B7FF;
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh;
+  }
 }
 
-// .bg {
-//   background-image: url("creatives/inspo/background.png");
-//   height: 100%;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
+h1 {
+  letter-spacing: 8px;
+}
 
-.banner {
-  display: table;
-  width: 100%;
- }
-  
- .hero {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-  margin: 0 auto;
- }
-  
- .container {
-  width: 1170px;
-  margin: 0 auto;
- }
+h5 {
+  letter-spacing: 3px;
+}
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px;
+}
+
+.container {
+  height: 100vh;
+}

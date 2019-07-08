@@ -1,23 +1,27 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html,
+body,
+header,
+.view {
   height: 100%; }
 
-a {
-  color: #00B7FF; }
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh; } }
 
-.banner {
-  display: table;
-  width: 100%; }
+h1 {
+  letter-spacing: 8px; }
 
-.hero {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-  margin: 0 auto; }
+h5 {
+  letter-spacing: 3px; }
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px; }
 
 .container {
-  width: 1170px;
-  margin: 0 auto; }
+  height: 100vh; }
 
 /*# sourceMappingURL=style.css.map */

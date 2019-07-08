@@ -1,37 +1,50 @@
-<div class="bg">background image</div>
+<html lang="en">
+<body>
+  <header>
+    <div class="view"
+      style="background-image: url('../images/background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+      <div class="mask rgba-black-light align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mb-4 white-text text-center">
+              <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
+                data-wow-delay="0.3s"><strong>ZEN</strong></h1>
+              <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
+              <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Find your inner
+                  ZEN</strong></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row py-5">
+        <div class="col-md-12 text-center">
+          <h2>Signup</h2>
+          <form action="/auth/signup" method="POST" id="form-container">
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" placeholder="JonSnow">
+            <br><br>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" placeholder="Your password">
+            <br>
+            {{#if message }}
+            <div class="error-message">{{ message }}</div>
+            {{/if}}
+            <br><br>
+            <button type="button" class="btn btn-info">Create account</button>
+            <p class="account-message">
+              Do you already have an account?
+              <a href="/auth/login">Login</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+</body>
 
-<div class=”banner”>
- <div class=”hero”>
- <div class=”container”>
- <h1>Big Title</h1>
- <h2>Sub Title</h2>
- </div>
- </div>
-</div>
-
-<h2>Signup</h2>
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>Create account</button>
-
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
-
-
-
+</html>
