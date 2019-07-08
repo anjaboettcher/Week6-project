@@ -6,6 +6,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const Zen = require("../models/Zen");
 
 const bcryptSalt = 10;
 
@@ -20,12 +21,26 @@ mongoose
 
 let users = [
   {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    username: "Mariana",
+    email: "marianamv112@gmail.com",
+    password: bcrypt.hashSync("mariana", bcrypt.genSaltSync(bcryptSalt)),
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    username: "Anja",
+    email: "anjaverenaboettcher@gmail.com",
+    password: bcrypt.hashSync("anja", bcrypt.genSaltSync(bcryptSalt)),
+  }
+]
+
+let zens = [
+  {
+    title: "Picnic in the park",
+    description: "I've done a picnic in Mata de Alvalade, we made a berbecue and all. Wear sun screen"
+  }, {
+    title: "City View in viewpoint",
+    description: "In Lisbon you have a lot of viewpoints where you can stand some time appreciating the view",
+    links: ["https://lisbonlisboaportugal.com/lisbon-sights/lisbon-viewpoints.html"],
+    images: ["https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjB0buxwqXjAhXp8OAKHausB5YQjRx6BAgBEAU&url=https%3A%2F%2Fwww.timeout.pt%2Flisboa%2Fpt%2Fcoisas-para-fazer%2Fos-melhores-miradouros-em-lisboa&psig=AOvVaw1g6tE-RIQiggLHWjJrKO0E&ust=1562682040426035"]
   }
 ]
 
@@ -36,6 +51,23 @@ User.deleteMany()
 .then(usersCreated => {
   console.log(`${usersCreated.length} users created with the following id:`);
   console.log(usersCreated.map(u => u._id));
+})
+.then(() => {
+  // Close properly the connection to Mongoose
+  mongoose.disconnect()
+})
+.catch(err => {
+  mongoose.disconnect()
+  throw err
+})
+
+Zen.deleteMany()
+.then(() => {
+  return Zen.create(zens)
+})
+.then(zensCreated => {
+  console.log(`${zensCreated.length} users created with the following id:`);
+  console.log(zensCreated.map(z => z._id));
 })
 .then(() => {
   // Close properly the connection to Mongoose
