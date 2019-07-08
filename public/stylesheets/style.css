@@ -30,4 +30,10 @@ h5 {
 footer {
   background-color: #26585d; }
 
+.card > img {
+  width: 100%; }
+
+.card {
+  margin-bottom: 10px; }
+
 /*# sourceMappingURL=style.css.map */
