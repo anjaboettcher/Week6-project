@@ -6,6 +6,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const Zen = require("../models/Zen");
 
 const bcryptSalt = 10;
 
@@ -50,6 +51,23 @@ User.deleteMany()
 .then(usersCreated => {
   console.log(`${usersCreated.length} users created with the following id:`);
   console.log(usersCreated.map(u => u._id));
+})
+.then(() => {
+  // Close properly the connection to Mongoose
+  mongoose.disconnect()
+})
+.catch(err => {
+  mongoose.disconnect()
+  throw err
+})
+
+Zen.deleteMany()
+.then(() => {
+  return Zen.create(zens)
+})
+.then(zensCreated => {
+  console.log(`${zensCreated.length} users created with the following id:`);
+  console.log(zensCreated.map(z => z._id));
 })
 .then(() => {
   // Close properly the connection to Mongoose
