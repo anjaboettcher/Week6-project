@@ -9,7 +9,7 @@ const zensSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true, maxlength: 280 },
   links: [String],
-  images: [String],
+  image: String,
   additional_info: String,   
 }, {
   timestamps: {

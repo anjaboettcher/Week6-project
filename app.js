@@ -58,6 +58,10 @@ hbs.registerHelper('ifUndefined', (value, options) => {
       return options.fn(this);
   }
 });
+
+hbs.registerHelper('dateFormat', (date) => {
+  return " " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() ;
+})
   
 
 // default value for title local
