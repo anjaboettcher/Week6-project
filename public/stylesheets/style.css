@@ -6,11 +6,18 @@ body {
 a {
   color: #00B7FF; }
 
-.bg {
-  background-image: url("creatives/inspo/background.png");
+.banner {
+  display: table;
+  width: 100%; }
+
+.hero {
+  display: table-cell;
+  vertical-align: middle;
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; }
+  margin: 0 auto; }
+
+.container {
+  width: 1170px;
+  margin: 0 auto; }
 
 /*# sourceMappingURL=style.css.map */
