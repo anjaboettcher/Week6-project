@@ -24,14 +24,10 @@ h5 {
 .container {
   height: 100vh; }
 
-.signup-container {
+.sign-up-container {
   background-color: #cee2d9; }
 
-.inner-container {
-  width: 50%;
-  align-items: center; }
-
 footer {
-  background-color: #e1b129; }
+  background-color: #26585d; }
 
 /*# sourceMappingURL=style.css.map */
