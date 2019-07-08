@@ -21,15 +21,16 @@ router.post("/login", passport.authenticate("local", {
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+  if (username === "" || email === "" || password === "") {
+    res.render("home", { message: "Indicate username, email and password" });
     return;
   }
 
   User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+      res.render("home", { message: "The username already exists" });
       return;
     }
 
@@ -38,22 +39,23 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
+      email,
       password: hashPass
     });
 
     newUser.save()
     .then(() => {
-      res.redirect("/");
+      res.redirect("/zen-board");
     })
     .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
+      res.render("home", { message: "Something went wrong" });
     })
   });
 });
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("/home");
 });
 
 module.exports = router;
