@@ -69,21 +69,20 @@ router.post("/signup", (req, res, next) => {
       console.log(process.env.GMAIL_USER);
       console.log(process.env.GMAIL_PASS);
 
-      const message = `http://localhost:3000/auth/confirm/${confirmationCode}`
+      const message = `http://localhost:3000/confirm/${confirmationCode}`
 
       transporter.sendMail({
           "from": "My website",
           "to": email,
           "subject": "Please activate your account",
           "text": message,
-          "html": `Please go to the link http://localhost:3000/auth/confirm/${confirmationCode}`
+          "html": `Please go to the link http://localhost:3000/confirm/${confirmationCode}`
         })
           
           res.redirect("/validate-your-account");
         }).catch(err => console.log(err));
       })
 });
-
 
 router.get("/validate-your-account", (req,res,next) => {
   res.render("validate-your-account")
@@ -92,16 +91,16 @@ router.get("/validate-your-account", (req,res,next) => {
 router.get("/confirm/:confirmationCode", (req,res,next) => {
   let confirmationCode = req.params.confirmationCode
   User.findOneAndUpdate ({confirmationCode}, { status: "active" })
-    .then(user => { 
+    .then(user => {
     req.login(user, () => {
-      res.redirect("/zen-board")
+      res.redirect("/main/zen-board")
     })
   })
 })
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/home");
+  res.redirect("/");
 });
 
 module.exports = router;

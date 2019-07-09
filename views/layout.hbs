@@ -13,11 +13,10 @@
 </head>
 
 <body>
-
+    {{#unless user}}
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
-          {{#if user}}
-            <div class="container">
-              <a class="navbar-brand" href="#"><strong>ZEN</strong></a>
+          <div class ="container">
+              <a class="navbar-brand" href="/"><strong>ZEN</strong></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -27,13 +26,13 @@
                     <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
                   </li>
                    <li class="nav-item">
-                    <a class="nav-link" href="/zen-board">Zen Board</a>
+                    <a class="nav-link" href="/main/zen-board">Zen Board</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/zen-history">Zen History</a>
+                    <a class="nav-link" href="/main/zen-history">Zen History</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/auth/logout">Logout</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                   </li>
                 </ul>
                 <form class="form-inline">
@@ -41,15 +40,14 @@
                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                   </div>
                 </form>
-              </div>
+                </div>
             </div>
-               {{/if}}
           </nav>
+    {{/unless}}
 
     {{{body}}}
-
+  
   <script src="/javascripts/script.js"></script>
-
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -60,5 +58,4 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 </body>
-
 </html>

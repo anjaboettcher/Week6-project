@@ -4,6 +4,7 @@ header,
 .view {
   height: 100%;
   scroll-behavior: smooth;
+
 }
 
 @media (max-width: 740px) {
@@ -29,9 +30,14 @@ h5 {
   width: 80px;
 }
 
-.container {
+.header-container {
   min-height: 100vh;
-  display:flex;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container {
+  min-height: 100vh;
 }
 
 .main-container {
@@ -44,6 +50,7 @@ h5 {
 }
 
 .sign-up-container {
+  min-height: 100vh;
   background-color:#cee2d9;
   display: flex;
 }
@@ -88,5 +95,9 @@ footer {
 
 .modal-links a {
   margin-right: 10px;
+}
+
+.navbar {
+  background-color: #e1b129;
 }
 

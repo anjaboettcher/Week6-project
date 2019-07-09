@@ -23,9 +23,13 @@ h5 {
   border-top: 3px solid #fff;
   width: 80px; }
 
-.container {
+.header-container {
   min-height: 100vh;
-  display: flex; }
+  display: flex;
+  justify-content: center; }
+
+.content-container {
+  min-height: 100vh; }
 
 .main-container {
   margin: 10px; }
@@ -35,6 +39,7 @@ h5 {
   justify-content: center; }
 
 .sign-up-container {
+  min-height: 100vh;
   background-color: #cee2d9;
   display: flex; }
 
@@ -70,5 +75,8 @@ footer {
 
 .modal-links a {
   margin-right: 10px; }
+
+.navbar {
+  background-color: #e1b129; }
 
 /*# sourceMappingURL=style.css.map */

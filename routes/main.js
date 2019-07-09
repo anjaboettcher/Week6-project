@@ -6,45 +6,50 @@ const nodemailer = require("nodemailer");
 const multer = require("multer");
 const upload = multer({ dest: "./public/uploads" });
 
-router.get("/zen-board", (req, res, next) => {
-  Zen.find({}).then(zens => {
-    res.render("zen-board", { zens });
+const {checkConnected} = require("../middlewares");
+
+router.get("/zen-board", checkConnected, (req, res, next) => {
+  let userId = req.user._id;
+  Zen.find({_creator: userId}).then(zens => {
+      res.render("zen-board", { zens });
   });
 });
 
-router.get("/zen-history", (req, res, next) => {
-  Zen.find({}).then(zens => {
+router.get("/zen-history", checkConnected, (req, res, next) => {
+  Zen.find({}).populate("_creator").then(zens => {
     res.render("zen-history", { zens });
   });
 });
 
-router.get("/delete-zen/:zenId", (req, res, next) => {
+router.get("/delete-zen/:zenId", checkConnected, (req, res, next) => {
   let zenId = req.params.zenId;
   Zen.findOneAndDelete({ _id: zenId }).then(response => {
     res.redirect("/main/zen-history");
   });
 });
 
-router.get("/edit-zen/:zenId", (req, res, next) => {
+router.get("/edit-zen/:zenId", checkConnected, (req, res, next) => {
   let zenId = req.params.zenId;
   Zen.findOne({ _id: zenId }).then(zen => {
     res.render("edit-zen", zen);
   });
 });
 
-router.get("/create-zen", (req, res, next) => {
+router.get("/create-zen", checkConnected, (req, res, next) => {
   res.render("create-zen");
 });
 
-router.post("/send-zen", upload.single("image"), (req, res, next) => {
+router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next) => {
   let title = req.body.title;
   let description = req.body.description;
   let additional_info = req.body.additional_info;
   let image = req.file.filename;
   let links = req.body.links;
   let destination_email = req.body.destination;
+  let creator = req.user._id;
 
   Zen.create({
+    _creator: creator,
     title: title,
     description: description,
     additional_info: additional_info,
@@ -72,7 +77,7 @@ router.post("/send-zen", upload.single("image"), (req, res, next) => {
     .catch(err => console.log(err));
 });
 
-router.post("/resend-zen", upload.single("image"), (req, res, next) => {
+router.post("/resend-zen", upload.single("image"), checkConnected, (req, res, next) => {
   let title = req.body.title;
   let description = req.body.description;
   let additional_info = req.body.additional_info;
