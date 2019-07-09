@@ -1,10 +1,9 @@
 <div class="main-container">
-    <h1> Create Zen</h1>
-
+    <h1> Edit and Resend Zen</h1>
     <div class="card">
         <div class="card-body ">
             <!-- Form -->
-            <form id="form" action="/main/send-zen" method="POST" enctype="multipart/form-data">
+            <form id="form" action="/main/resend-zen" method="POST" enctype="multipart/form-data">
             <div class="form-row">
                     <div class="col">
                         <div class="md-form">
@@ -15,22 +14,23 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="md-form">
-                            <input type="text" class="form-control" name="title" placeholder="Title"><br>
+                            <input type="text" class="form-control" name="title" value="{{title}}"><br>
                         </div>
                     </div>
                 </div>
                 <div class="md-form mt-0">
-                    <input type="text" class="form-control" name="description" placeholder="Description"><br>
+                    <input type="text" class="form-control" name="description" value="{{description}}"><br>
                 </div>
                 <div class="custom-file">
                     <input type="file" class="form-control custom-file-input" id="customFile" name="image">
                     <label class="custom-file-label" for="customFile"></label>
                 </div><br><br>
                 <div class="md-form mt-0">
-                    <input type="text" class="form-control" name="additional-info" placeholder="Additional Info"><br>
+                    <input type="text" class="form-control" name="additional-info" value="{{additional_info}}"><br>
                 </div>
+                {{#each links}}
                 <div class="input-group md-form mt-0">
-                    <input class="form-control" name="links[]" type="text" placeholder="Type something" />
+                    <input class="form-control" name="links[]" type="text" value="{{this}}" />
                     <button class="btn btn-success btn-add" type="button" onclick="add_link_field()">
                         <span>+</span>
                     </button>
@@ -39,12 +39,10 @@
                 </div>
                 <br>
                 <div class="link_fields">
-
                 </div>
-
+                {{/each}}
                 <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
-                    type="submit">Send</button>
-
+                type="submit">Send</button>
             </form>
         </div>
 

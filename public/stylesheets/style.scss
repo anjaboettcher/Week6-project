@@ -34,10 +34,10 @@ h5 {
   display:flex;
 }
 
-<<<<<<< HEAD
-.signup-container {
-  background-color: #cee2d9;
-=======
+.main-container {
+  margin: 10px;
+}
+
 .container-inside {
   display: flex;
   justify-content: center;
@@ -46,7 +46,6 @@ h5 {
 .sign-up-container {
   background-color:#cee2d9;
   display: flex;
->>>>>>> a29058c8fd1ed0849fd6ea648413dc4bb0e5da2e
 }
 
 .card-body, .card {
@@ -54,14 +53,11 @@ h5 {
   align-self: center;
   // margin-top: 8%;
   text-align: center;
+  border: none;
 }
 
 footer {
-<<<<<<< HEAD
-  background-color: #e1b129;
-=======
   background-color: #26585d;
->>>>>>> a29058c8fd1ed0849fd6ea648413dc4bb0e5da2e
 }
 
 .card > img {
