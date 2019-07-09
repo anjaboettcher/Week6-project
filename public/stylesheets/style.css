@@ -23,15 +23,20 @@ h5 {
   border-top: 3px solid #fff;
   width: 80px; }
 
-.container {
+.header-container {
   min-height: 100vh;
-  display: flex; }
+  display: flex;
+  justify-content: center; }
+
+.content-container {
+  min-height: 100vh; }
 
 .container-inside {
   display: flex;
   justify-content: center; }
 
 .sign-up-container {
+  min-height: 100vh;
   background-color: #cee2d9;
   display: flex; }
 
@@ -48,5 +53,8 @@ footer {
 
 .card {
   margin-bottom: 10px; }
+
+.navbar {
+  background-color: #e1b129; }
 
 /*# sourceMappingURL=style.css.map */
