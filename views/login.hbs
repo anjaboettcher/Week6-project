@@ -1,0 +1,31 @@
+ <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+        <!-- Form -->
+       <form action="/login" method="POST" id="form-container" class="text-center" style="color: #757575;">
+       <h2>Login</h2>
+            <div class="form-row">
+                <div class="col">
+                    <!-- Username -->
+                    <div class="md-form">
+                        <input id="username" type="text" class="form-control" name="username" placeholder="Your username"><br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="md-form">
+                <input id="password" type="password" class="form-control" name="password" placeholder="********"><br>
+            </div>
+
+            <!-- Log In button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Log in</button>
+              <p class="account-message">Don't have an account yet?<a href="/#sign-up"> Signup</a> </p>
+        </form>
+
+  {{#if message }}
+    <div class="error-message">{{ message }}</div>
+  {{/if}}
+    </div>
+</div>
+</div>
+</div>

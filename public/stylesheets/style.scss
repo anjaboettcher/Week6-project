@@ -3,6 +3,7 @@ body,
 header,
 .view {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 740px) {
@@ -11,6 +12,7 @@ header,
   header,
   .view {
     height: 100vh;
+    scroll-behavior: smooth;
   }
 }
 
@@ -28,11 +30,25 @@ h5 {
 }
 
 .container {
-  height: 100vh;
+  min-height: 100vh;
+  display:flex;
+}
+
+.container-inside {
+  display: flex;
+  justify-content: center;
 }
 
 .sign-up-container {
   background-color:#cee2d9;
+  display: flex;
+}
+
+.card-body, .card {
+  background-color: white;
+  align-self: center;
+  // margin-top: 8%;
+  text-align: center;
 }
 
 footer {
