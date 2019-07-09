@@ -29,13 +29,6 @@ router.get("/delete-zen/:zenId", checkConnected, (req, res, next) => {
   });
 });
 
-router.get("/edit-zen/:zenId", checkConnected, (req, res, next) => {
-  let zenId = req.params.zenId;
-  Zen.findOne({ _id: zenId }).then(zen => {
-    res.render("edit-zen", zen);
-  });
-});
-
 // localhost:3000/main/profile
 router.get("/profile", checkConnected, (req,res,next) => {
     if (req.user){
@@ -120,7 +113,14 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
     .catch(err => console.log(err));
 });
 
-router.post("/resend-zen", upload.single("image"), checkConnected, (req, res, next) => {
+router.get("/resend-zen/:zenId", checkConnected, (req, res, next) => {
+  let zenId = req.params.zenId;
+  Zen.findById(zenId).then(zen => {
+    res.render("edit-zen", zen)
+  })
+});
+
+router.post("/resend-zen/:zenId", upload.single("image"), checkConnected, (req, res, next) => {
   let title = req.body.title;
   let description = req.body.description;
   let additional_info = req.body.additional_info;
@@ -128,15 +128,15 @@ router.post("/resend-zen", upload.single("image"), checkConnected, (req, res, ne
   let links = req.body.links;
   let destination_email = req.body.destination;
   let zenId = req.params.zenId;
+  
 
-  Zen.findByIdAndUpdate(zenId, {
+  Zen.findByIdAndUpdate({_id: zenId}, {
     title: title,
     description: description,
     additional_info: additional_info,
     image: `/uploads/${image}`,
     links: links
-  })
-    .then(response => {
+  }).then(response => {
       let transporter = nodemailer.createTransport({
         service: "Gmail",
         auth: {
@@ -152,6 +152,7 @@ router.post("/resend-zen", upload.single("image"), checkConnected, (req, res, ne
         text: "Wtv"
         //,"html": ``
       });
+      
       res.redirect("/main/zen-history");
     })
     .catch(err => console.log(err));

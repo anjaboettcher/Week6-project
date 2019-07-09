@@ -3,30 +3,30 @@
     <div class="card">
         <div class="card-body ">
             <!-- Form -->
-            <form id="form" action="/main/resend-zen" method="POST" enctype="multipart/form-data">
+            <form id="form" action="/main/resend-zen/{{this._id}}" method="POST" enctype="multipart/form-data">
             <div class="form-row">
                     <div class="col">
                         <div class="md-form">
-                            <input type="email" class="form-control" name="destination" placeholder="Destination Email"><br>
+                            <input type="email" class="form-control" name="destination" placeholder="Destination Email" required><br>
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <div class="md-form">
-                            <input type="text" class="form-control" name="title" value="{{title}}"><br>
+                            <input type="text" class="form-control" name="title" value="{{title}}" placeholder="Title" required><br>
                         </div>
                     </div>
                 </div>
                 <div class="md-form mt-0">
-                    <input type="text" class="form-control" name="description" value="{{description}}"><br>
+                    <input type="text" class="form-control" name="description" value="{{description}}" placeholder="Description" required><br>
                 </div>
                 <div class="custom-file">
                     <input type="file" class="form-control custom-file-input" id="customFile" name="image">
                     <label class="custom-file-label" for="customFile"></label>
                 </div><br><br>
                 <div class="md-form mt-0">
-                    <input type="text" class="form-control" name="additional-info" value="{{additional_info}}"><br>
+                    <input type="text" class="form-control" name="additional-info" value="{{additional_info}}" placeholder="Additional Info"><br>
                 </div>
                 {{#each links}}
                 <div class="input-group md-form mt-0">
