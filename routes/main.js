@@ -7,6 +7,7 @@ const multer = require("multer");
 const upload = multer({ dest: "./public/uploads" });
 
 const {checkConnected} = require("../middlewares");
+const User = require("../models/User");
 
 router.get("/zen-board", checkConnected, (req, res, next) => {
   let userId = req.user._id;
@@ -33,6 +34,48 @@ router.get("/edit-zen/:zenId", checkConnected, (req, res, next) => {
   Zen.findOne({ _id: zenId }).then(zen => {
     res.render("edit-zen", zen);
   });
+});
+
+// localhost:3000/main/profile
+router.get("/profile", checkConnected, (req,res,next) => {
+    if (req.user){
+      res.render("profile", {user: req.user})
+    }
+    else {
+      res.redirect("/login")
+    }
+  })
+
+  router.get("/edit-profile", checkConnected, (req, res, next) => {
+    res.render("edit-profile");
+  });
+  
+  router.post("/edit-profile", checkConnected, (req, res, next) => {
+    console.log("CHECK", req.body)
+    User.findByIdAndUpdate(req.user._id)
+    .then(user => {
+      res.redirect("/main/profile");
+    })
+  });
+
+router.get('/zen-board', checkConnected, (req, res, next) => {
+    Zen.find({}).then(zens =>
+        
+        {res.render('zen-board', {zens})
+    });
+});
+
+router.get('/zen-history', checkConnected, (req, res, next) => {
+    Zen.find({}).then(zens =>
+        {res.render('zen-history', {zens})
+    });
+});
+
+router.get('/delete-zen/:zenId', checkConnected, (req, res, next) => {
+    let zenId = req.params.zenId
+    Zen.findOneAndDelete({_id: zenId}).then(response => {
+         res.redirect("/main/zen-history");
+    }); 
 });
 
 router.get("/create-zen", checkConnected, (req, res, next) => {
@@ -113,5 +156,6 @@ router.post("/resend-zen", upload.single("image"), checkConnected, (req, res, ne
     })
     .catch(err => console.log(err));
 });
+
 
 module.exports = router;

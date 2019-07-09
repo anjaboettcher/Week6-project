@@ -14,6 +14,7 @@ header,
   .view {
     height: 100vh;
     scroll-behavior: smooth;
+
   }
 }
 
@@ -58,7 +59,6 @@ h5 {
 .card-body, .card {
   background-color: white;
   align-self: center;
-  // margin-top: 8%;
   text-align: center;
   border: none;
 }
@@ -99,5 +99,10 @@ footer {
 
 .navbar {
   background-color: #e1b129;
+}
+
+.fas {
+  font-size: 40px;
+  color: #e1b129;
 }
 
