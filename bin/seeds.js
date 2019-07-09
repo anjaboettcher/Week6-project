@@ -37,6 +37,7 @@ let zens = [
     title: "Picnic in the park",
     description: "I've done a picnic in Mata de Alvalade, we made a berbecue and all. Wear sun screen"
   }, {
+    
     title: "City View in viewpoint",
     description: "In Lisbon you have a lot of viewpoints where you can stand some time appreciating the view",
     links: ["https://lisbonlisboaportugal.com/lisbon-sights/lisbon-viewpoints.html"],

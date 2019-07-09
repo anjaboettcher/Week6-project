@@ -4,7 +4,7 @@ header,
 .view {
   height: 100%;
   scroll-behavior: smooth;
-  
+
 }
 
 @media (max-width: 740px) {
@@ -68,6 +68,28 @@ footer {
 
 .card {
   margin-bottom: 10px;
+  position: relative;
+}
+
+.close.close-card {
+  z-index: 1001;
+  position: absolute;
+  width: fit-content;
+  margin: 3px;
+  margin-left: 90%;
+}
+
+.modal-dialog {
+  margin-top: 20%;
+}
+
+.modal-links  {
+  text-align: right;
+  color: blue;
+}
+
+.modal-links a {
+  margin-right: 10px;
 }
 
 .navbar {

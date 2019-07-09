@@ -52,7 +52,25 @@ footer {
   width: 100%; }
 
 .card {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  position: relative; }
+
+.close.close-card {
+  z-index: 1001;
+  position: absolute;
+  width: fit-content;
+  margin: 3px;
+  margin-left: 90%; }
+
+.modal-dialog {
+  margin-top: 20%; }
+
+.modal-links {
+  text-align: right;
+  color: blue; }
+
+.modal-links a {
+  margin-right: 10px; }
 
 .navbar {
   background-color: #e1b129; }
