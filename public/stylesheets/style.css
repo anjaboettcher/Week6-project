@@ -2,14 +2,16 @@ html,
 body,
 header,
 .view {
-  height: 100%; }
+  height: 100%;
+  scroll-behavior: smooth; }
 
 @media (max-width: 740px) {
   html,
   body,
   header,
   .view {
-    height: 100vh; } }
+    height: 100vh;
+    scroll-behavior: smooth; } }
 
 h1 {
   letter-spacing: 8px; }
@@ -22,17 +24,24 @@ h5 {
   width: 80px; }
 
 .container {
-  height: 100vh; }
+  min-height: 100vh;
+  display: flex; }
 
-.signup-container {
-  background-color: #cee2d9; }
+.container-inside {
+  display: flex;
+  justify-content: center; }
 
-.inner-container {
-  width: 50%;
-  align-items: center; }
+.sign-up-container {
+  background-color: #cee2d9;
+  display: flex; }
+
+.card-body, .card {
+  background-color: white;
+  align-self: center;
+  text-align: center; }
 
 footer {
-  background-color: #e1b129; }
+  background-color: #26585d; }
 
 .card > img {
   width: 100%; }

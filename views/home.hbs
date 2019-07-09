@@ -4,17 +4,13 @@
   <header>
     <div class="view"
       style="background-image: url('../images/background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-      <div class="mask rgba-black-light align-items-center">
+      <div class="mask rgba-black-light ">
         <div class="container">
-          <div class="row">
-            <div class="col-md-12 mb-4 white-text text-center">
-              <h1 class="h1-reponsive white-text align-middle text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
-                data-wow-delay="0.3s"><strong>ZEN</strong></h1>
-              <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
-              <h5 class="text-uppercase mb-4 align-middle white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Find your inner
-                  ZEN</strong></h5>
+            <div class="col-md-12 mb-4 text-center my-auto">
+              <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>ZEN</strong></h1>
+              <hr class="hr-light">
+              <h5 class="text-uppercase mb-4 align-middle"><strong>Find your inner ZEN</strong></h5>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -32,15 +28,18 @@
     </div>
 
     <!-- Material form register -->
-<div class="card align-items-center">
-    <h5 class="info-color white-text text-center py-4">
-        <strong>Sign up</strong>
-    </h5>
+    <div class = "sign-up-container" id= "sign-up">
+      <div class ="container container-inside">
+<div class="card">
+
 
     <!--Card content-->
-    <div class="card-body px-lg-5 pt-0">
+    <div class="card-body">
+          <h5 class="info-color white-text py-2">
+        <strong>Sign up</strong>
+    </h5>
         <!-- Form -->
-        <form id="form" action="/signup" method="POST" class="text-center" style="color: #757575;">
+        <form id="form" action="/signup" method="POST" style="color: #757575;">
             <div class="form-row">
                 <div class="col">
                     <!-- Username -->
@@ -57,7 +56,7 @@
 
             <!-- Password -->
             <div class="md-form">
-                <input type="password" class="form-control" name="confirmPassword" placeholder="********"><br>
+                <input type="password" class="form-control" name="password" placeholder="********"><br>
                 <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                     At least 8 characters and 1 digit
                 </small>
@@ -65,15 +64,22 @@
 
             <!-- Sign up button -->
             <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+              <p class="form-text text-muted mb-4"> Do you already have an account?<a href="/login"> Login</a></p>
         </form>
+
+  {{#if message }}
+    <div class="error-message">{{ message }}</div>
+  {{/if}}
     </div>
+</div>
+</div>
 </div>
   </main>
 
 
 <footer>
-      <div class="footer-copyright text-center py-3">© 2019 Copyright:
-        <a href="">Created with ❤️ @ Ironhack</a>
+      <div class="footer-copyright text-center py-3 text-white">© 2019 Copyright:
+        <a href="" class= "text-white">Created with ❤️ @ Ironhack</a>
       </div>
     </footer>
 </body>

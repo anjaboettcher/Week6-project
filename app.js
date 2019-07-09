@@ -8,7 +8,6 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-
 const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
@@ -35,7 +34,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Express View engine setup
-
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
@@ -78,14 +76,8 @@ app.use(session({
 app.use(flash());
 require('./passport')(app);
     
-
-const index = require('./routes/index');
-app.use('/', index);
-
-const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
-
-const mainRoutes = require('./routes/main');
-app.use('/main', mainRoutes)
+app.use('/', require('./routes/index'));
+app.use('/', require('./routes/auth'));
+app.use('/main', require('./routes/main'))
       
 module.exports = app;
