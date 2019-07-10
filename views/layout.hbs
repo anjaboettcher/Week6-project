@@ -15,7 +15,7 @@
 
 <body>
     {{#if user}}
-        <nav class="navbar navbar-expand-lg scrolling-navbar navbar-light sticky-top">
+        <nav class="navbar navbar-expand-lg scrolling-navbar navbar-light">
           <div class ="container">
             <img src="../images/logo.png" width="25" height="25" class="d-inline-block align-top" alt="">
               <a class="navbar-brand" href="/"><strong>ZEN</strong></a>
@@ -27,11 +27,11 @@
                   <li>
                     <a class="nav-link" href="/main/profile">Profile</a>
                   </li>
-                  <li>
-                    <a class="nav-link" href="/main/create-zen">Create</a>
-                  </li>
                    <li class="nav-item">
                     <a class="nav-link" href="/main/zen-board">Zen Board</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/main/create-zen">Create</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/main/zen-history">Zen History</a>
@@ -49,7 +49,7 @@
             </div>
           </nav>
           {{else}}
-                  <nav class="navbar navbar-expand-lg scrolling-navbar navbar-light sticky-top">
+                  <nav class="navbar navbar-expand-lg scrolling-navbar navbar-light navbar-fixed">
           <div class ="container">
             <img src="../images/logo.png" width="25" height="25" class="d-inline-block align-top" alt="">
               <a class="navbar-brand" href="/"><strong>ZEN</strong></a>

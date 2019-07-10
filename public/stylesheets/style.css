@@ -27,7 +27,7 @@ h5 {
 
 .header-container {
   position: relative;
-  min-height: calc(100vh - 56px);
+  min-height: 100vh;
   display: flex;
   justify-content: center; }
 
@@ -97,8 +97,10 @@ footer {
   font-size: 30px;
   color: #357e85; }
 
-.zen-image {
-  object-fit: cover;
-  height: 100%; }
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; }
 
 /*# sourceMappingURL=style.css.map */
