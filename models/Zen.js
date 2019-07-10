@@ -10,7 +10,9 @@ const zensSchema = new Schema({
   description: { type: String, required: true, maxlength: 280 },
   links: [String],
   image: String,
-  additional_info: String,   
+  additional_info: String,
+  emailTo: String
+  //,isRead: {type:Boolean, default: false}
 }, {
   timestamps: {
     createdAt: 'created_at',
