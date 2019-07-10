@@ -13,10 +13,16 @@ function add_link_field() {
   let divtest = document.createElement("div");
   divtest.setAttribute("class", "form-group removeclass" + index);
   let rdiv = "removeclass" + index;
-  divtest.innerHTML = '<div class="input-group md-form mt-0"><input class="form-control" name="links[]" type="text" placeholder="Type something" /><button class="btn btn-success btn-add" type="button" onclick="add_link_field()"><span>+</span></button><button class="btn btn-danger btn-add" type="button" onclick="remove_link_field('+index+')"><span>-<span></button></div>'
+  divtest.innerHTML = '<div class="input-group md-form mt-0"><input class="form-control" name="links[]" type="text" placeholder="Type something" /></button><button class="btn btn-outline-info btn-rounded z-depth-0" type="button" onclick="remove_link_field('+index+')"><span>-<span></button></div>'
   objTo.appendChild(divtest);
 }
 function remove_link_field(rid) {
-  console.log("!!!", rid)
   $(".removeclass" + rid).remove();
 }
+
+let fileInput = document.querySelector("#createCustomFile");
+fileInput.onchange = function() {
+  if(this.value)
+    { this.nextElementSibling.innerHTML=`${this.value.substring(0,40)}`}
+  console.log(this)
+};
