@@ -60,6 +60,10 @@ hbs.registerHelper('ifUndefined', (value, options) => {
 hbs.registerHelper('dateFormat', (date) => {
   return " " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() ;
 })
+
+hbs.registerHelper('imageNameFormat', (imagePath) => {
+  return " " + imagePath.substring(9,39);
+})
   
 
 // default value for title local

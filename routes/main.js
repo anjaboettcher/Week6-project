@@ -10,8 +10,8 @@ const {checkConnected} = require("../middlewares");
 const User = require("../models/User");
 
 router.get("/zen-board", checkConnected, (req, res, next) => {
-  let userId = req.user._id;
-  Zen.find({_creator: userId}).then(zens => {
+  let userEmail = req.user.email;
+  Zen.find({emailTo: userEmail}).then(zens => {
       res.render("zen-board", { zens });
   });
 });
@@ -90,7 +90,8 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
     description: description,
     additional_info: additional_info,
     image: `/uploads/${image}`,
-    links: links
+    links: links,
+    emailTo: destination_email
   })
     .then(response => {
       let transporter = nodemailer.createTransport({
@@ -119,44 +120,5 @@ router.get("/resend-zen/:zenId", checkConnected, (req, res, next) => {
     res.render("edit-zen", zen)
   })
 });
-
-router.post("/resend-zen/:zenId", upload.single("image"), checkConnected, (req, res, next) => {
-  let title = req.body.title;
-  let description = req.body.description;
-  let additional_info = req.body.additional_info;
-  let image = req.file.filename;
-  let links = req.body.links;
-  let destination_email = req.body.destination;
-  let zenId = req.params.zenId;
-  
-
-  Zen.findByIdAndUpdate({_id: zenId}, {
-    title: title,
-    description: description,
-    additional_info: additional_info,
-    image: `/uploads/${image}`,
-    links: links
-  }).then(response => {
-      let transporter = nodemailer.createTransport({
-        service: "Gmail",
-        auth: {
-          user: process.env.GMAIL_USER,
-          pass: process.env.GMAIL_PASS
-        }
-      });
-
-      transporter.sendMail({
-        from: "My website",
-        to: destination_email,
-        subject: "A Zen from a Friend",
-        text: "Wtv"
-        //,"html": ``
-      });
-      
-      res.redirect("/main/zen-history");
-    })
-    .catch(err => console.log(err));
-});
-
 
 module.exports = router;

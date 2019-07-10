@@ -20,9 +20,18 @@ function remove_link_field(rid) {
   $(".removeclass" + rid).remove();
 }
 
-let fileInput = document.querySelector("#createCustomFile");
-fileInput.onchange = function() {
-  if(this.value)
+let createFileInput = document.querySelector("#createCustomFile");
+let editFileInput = document.querySelector("#editCustomFile"); 
+
+if (createFileInput) {
+  createFileInput.onchange = function() {
+    if(this.value)
     { this.nextElementSibling.innerHTML=`${this.value.substring(0,40)}`}
-  console.log(this)
-};
+  };
+}
+
+if (editFileInput) {
+  editFileInput.onchange = function() {
+      this.nextElementSibling.innerHTML=`${this.nextElementSibling.innerHTML.substring(7,40)}`;
+  }
+}
