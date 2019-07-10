@@ -12,7 +12,6 @@ const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
     
-
 mongoose
   .connect('mongodb://localhost/project-w6', {useNewUrlParser: true})
   .then(x => {

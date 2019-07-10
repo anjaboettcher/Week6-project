@@ -76,16 +76,23 @@ router.get("/create-zen", checkConnected, (req, res, next) => {
 });
 
 router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next) => {
+    console.log(req)
   let title = req.body.title;
   let description = req.body.description;
   let additional_info = req.body.additional_info;
-  let image = req.file.filename;
+  let image = ""
+    if (req.file === undefined) {
+    image = "../images/default_img.png"
+  console.log("image",image)    
+  } else {
+    image = req.file.filename;
+  }
   let links = req.body.links;
   let destination_email = req.body.destination;
   let creator = req.user._id;
 
   Zen.create({
-    _creator: creator,
+    _creator: creator.username,
     title: title,
     description: description,
     additional_info: additional_info,
@@ -104,8 +111,8 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
       transporter.sendMail({
         from: "My website",
         to: destination_email,
-        subject: "A Zen from a Friend",
-        text: "Wtv"
+        subject: `A Zen from ${{creator}}`,
+        text: `wtv ${creator} ${creator} ${creator} ${creator}`,
         //,"html": ``
       });
       res.redirect("/main/zen-history");
@@ -124,7 +131,13 @@ router.post("/resend-zen/:zenId", upload.single("image"), checkConnected, (req, 
   let title = req.body.title;
   let description = req.body.description;
   let additional_info = req.body.additional_info;
-  let image = req.file.filename;
+  if (req.file === undefined) {
+      console.log("IF FILE UNDEFINED",req.file)
+  let image = "../images/default_img.png"
+  } else {
+      console.log("IF FILE !== UNDEFINED",req.file)
+    let image = req.file.filename;
+  }
   let links = req.body.links;
   let destination_email = req.body.destination;
   let zenId = req.params.zenId;

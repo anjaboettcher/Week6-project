@@ -33,20 +33,28 @@ router.post("/signup", (req, res, next) => {
  let confirmationCode = token;
 
   if (username === "" || email === "" || password === "") {
-    //ADD A SIGNUP PAGE HERE
-    req.flash("error", "Indicate username, email and password!") // Define a req.flash("error") that can be used in the future by the same user
+    console.log("USERNAME:", username, "EMAIL:", email, "PASSWORD:", password)
+    req.flash("error", "Indicate username, email and password!") // Define a req.flash("error") that can be used in the future by 
     res.redirect("/#sign-up");
     // res.redirect("/profile#sign-up", { message: "Indicate username, email and password!" });
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
-    if (user !== null) {
-      // res.render("home", { message: "The username already exists" });
-      // res.redirect("/");
-      //change
+  User.findOne({ email }, "email", (err, user) => {
+    if (email !== null) {
+      req.flash("error", "You are already a registered user")
+      res.redirect("/#sign-up");
       return;
     }
+
+    User.findOne({ username }, "username", (err, user) => {
+      if (username !== null) {
+        req.flash("error", "This user already exists")
+        res.redirect("/#sign-up");
+        return;
+      }  
+
+    
     
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
@@ -86,6 +94,7 @@ router.post("/signup", (req, res, next) => {
           res.redirect("/validate-your-account");
         }).catch(err => console.log(err));
       })
+    })
 });
 
 router.get("/validate-your-account", (req,res,next) => {
