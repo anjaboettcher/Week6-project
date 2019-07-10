@@ -33,17 +33,21 @@ router.post("/signup", (req, res, next) => {
  let confirmationCode = token;
 
   if (username === "" || email === "" || password === "") {
-    res.render("home", { message: "Indicate username, email and password!" });
+    //ADD A SIGNUP PAGE HERE
+    req.flash("error", "Indicate username, email and password!") // Define a req.flash("error") that can be used in the future by the same user
+    res.redirect("/#sign-up");
+    // res.redirect("/profile#sign-up", { message: "Indicate username, email and password!" });
     return;
   }
 
   User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
-      res.render("home", { message: "The username already exists" });
-      res.redirect("/");
+      // res.render("home", { message: "The username already exists" });
+      // res.redirect("/");
+      //change
       return;
     }
-
+    
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 

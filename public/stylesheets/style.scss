@@ -32,13 +32,15 @@ h5 {
 }
 
 .header-container {
-  min-height: 100vh;
+  position: relative;
+  min-height: calc(100vh - 56px);
   display: flex;
   justify-content: center;
 }
 
 .content-container {
-  min-height: 100vh;
+  height: 100vh;
+  position: relative;
 }
 
 .main-container {
@@ -101,8 +103,12 @@ footer {
   background-color: #e1b129;
 }
 
-.fas {
-  font-size: 40px;
-  color: #e1b129;
+.icon-down, .fas {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 30px;
+  color: #357e85;
 }
-
