@@ -1,7 +1,8 @@
-<div class="main-container">
-    <h1>Zen History</h1>
+<div class="main-container ">
+    <div class ="container">
+    <h1 class ="text-center">Zen History</h1>
     {{#if zens}}
-    <div class="row">
+    <div class="row ">
         {{#each zens}}
         <div class="col-md-4">
             <div class="card text-center">
@@ -10,7 +11,7 @@
                         data-target="#exampleModal{{this._id}}">&times;</span>
                 </button>
 
-                <img src="{{this.image}}" alt="">
+                <img src="{{this.image}}" class = "zen-image" alt="">
                 <div class="card-body ">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.description}}</p>
@@ -41,4 +42,4 @@
     <h2> Click <span><a href="/main/create-zen">here</a> </span>and start Zening now!</h2>
     {{/if}}
 </div>
-
+</div>

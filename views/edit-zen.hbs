@@ -3,7 +3,7 @@
         <div class="card-body ">
              <h1> Edit and Resend Zen</h1>
             <!-- Form -->
-            <form id="form" action="/main/resend-zen/{{this._id}}" method="POST" enctype="multipart/form-data">
+            <form id="form" action="/main/send-zen" method="POST" enctype="multipart/form-data">
             <div class="form-row">
                     <div class="col">
                         <div class="md-form">
@@ -22,19 +22,21 @@
                     <input type="text" class="form-control" name="description" value="{{description}}" placeholder="Description" required><br>
                 </div>
                 <div class="custom-file">
-                    <input type="file" class="form-control custom-file-input" id="customFile" name="image">
-                    <label class="custom-file-label" for="customFile"></label>
-                </div><br><br>
+                    
+                    <input type="file" class="form-control-file custom-file-input" id="editCustomFile" name="image">
+                    <label class="custom-file-label" for="customFile">{{imageNameFormat image}}</label>
+
+                </div>
+                
+                <br><br>
                 <div class="md-form mt-0">
                     <input type="text" class="form-control" name="additional-info" value="{{additional_info}}" placeholder="Additional Info"><br>
                 </div>
                 {{#each links}}
                 <div class="input-group md-form mt-0">
                     <input class="form-control" name="links[]" type="text" value="{{this}}" />
-                    <button class="btn btn-success btn-add" type="button" onclick="add_link_field()">
+                    <button class="btn btn-info btn-rounded waves-effect z-depth-0" type="button" onclick="add_link_field()">
                         <span>+</span>
-                    </button>
-                    <button class="btn btn-danger btn-add" type="button" onclick="remove_link_field(1)"><span>-<span>
                     </button>
                 </div>
                 <br>

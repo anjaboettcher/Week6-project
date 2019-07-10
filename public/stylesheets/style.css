@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Karla&display=swap");
 html,
 body,
 header,
@@ -17,7 +18,8 @@ h1 {
   letter-spacing: 8px; }
 
 h5 {
-  letter-spacing: 3px; }
+  letter-spacing: 3px;
+  font-family: 'Karla', sans-serif; }
 
 .hr-light {
   border-top: 3px solid #fff;
@@ -43,6 +45,11 @@ h5 {
 .sign-up-container {
   min-height: 100vh;
   background-color: #cee2d9;
+  display: flex; }
+
+.log-in-container {
+  background-color: #f59a7b;
+  min-height: 100vh;
   display: flex; }
 
 .card-body, .card {
@@ -78,6 +85,9 @@ footer {
 .modal-links a {
   margin-right: 10px; }
 
+.navbar {
+  background: none; }
+
 .icon-down, .fas {
   position: absolute;
   bottom: 20px;
@@ -86,5 +96,9 @@ footer {
   text-align: center;
   font-size: 30px;
   color: #357e85; }
+
+.zen-image {
+  object-fit: cover;
+  height: 100%; }
 
 /*# sourceMappingURL=style.css.map */

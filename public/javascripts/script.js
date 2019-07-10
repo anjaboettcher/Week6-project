@@ -6,17 +6,32 @@ document.addEventListener(
   false
 );
 
-var index = 1;
+let index = 1;
 function add_link_field() {
   index++;
-  var objTo = document.querySelector(".link_fields");
-  var divtest = document.createElement("div");
+  let objTo = document.querySelector(".link_fields");
+  let divtest = document.createElement("div");
   divtest.setAttribute("class", "form-group removeclass" + index);
-  var rdiv = "removeclass" + index;
-  divtest.innerHTML = '<div class="input-group md-form mt-0"><input class="form-control" name="links[]" type="text" placeholder="Type something" /><button class="btn btn-success btn-add" type="button" onclick="add_link_field()"><span>+</span></button><button class="btn btn-danger btn-add" type="button" onclick="remove_link_field('+index+')"><span>-<span></button></div>'
-  
+  let rdiv = "removeclass" + index;
+  divtest.innerHTML = '<div class="input-group md-form mt-0"><input class="form-control" name="links[]" type="text" placeholder="Type something" /></button><button class="btn btn-outline-info btn-rounded z-depth-0" type="button" onclick="remove_link_field('+index+')"><span>-<span></button></div>'
   objTo.appendChild(divtest);
 }
 function remove_link_field(rid) {
   $(".removeclass" + rid).remove();
+}
+
+let createFileInput = document.querySelector("#createCustomFile");
+let editFileInput = document.querySelector("#editCustomFile"); 
+
+if (createFileInput) {
+  createFileInput.onchange = function() {
+    if(this.value)
+    { this.nextElementSibling.innerHTML=`${this.value.substring(0,40)}`}
+  };
+}
+
+if (editFileInput) {
+  editFileInput.onchange = function() {
+      this.nextElementSibling.innerHTML=`${this.nextElementSibling.innerHTML.substring(7,40)}`;
+  }
 }

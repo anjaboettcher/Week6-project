@@ -11,6 +11,8 @@ const zensSchema = new Schema({
   links: [String],
   image: { type: String, default: "../images/default_img.png"},
   additional_info: String,   
+  emailTo: String
+  //,isRead: {type:Boolean, default: false}
 }, {
   timestamps: {
     createdAt: 'created_at',

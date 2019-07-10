@@ -1,5 +1,5 @@
 module.exports = {
-  template: (message, username) => 
+  template: (username, title, description, additional_info, image, links) => 
   { return `<!doctype html>
   <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
   
@@ -225,7 +225,7 @@ module.exports = {
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tr>
                       <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                        <div style="font-family:Roboto, Helvetica, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:center;color:#616161;"> Someone sent you a Zen </div>
+                        <div style="font-family:Roboto, Helvetica, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:center;color:#616161;"> ${username} sent you a Zen </div>
                       </td>
                     </tr>
                   </table>
@@ -271,7 +271,7 @@ module.exports = {
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tr>
                       <td align="center" style="font-size:0px;padding:0px;word-break:break-word;">
-                        <div style="font-family:Roboto, Helvetica, sans-serif;font-size:18px;font-weight:500;line-height:24px;text-align:center;color:#616161;"> ZEN TITLE </div>
+                        <div style="font-family:Roboto, Helvetica, sans-serif;font-size:18px;font-weight:500;line-height:24px;text-align:center;color:#616161;">${title}</div>
                       </td>
                     </tr>
                     <tr>
@@ -334,8 +334,10 @@ module.exports = {
                     <tr>
                       <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                         <div style="font-family:Roboto, Helvetica, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:left;color:#616161;">
-                          <p>Hello!</p>
-                          <p>ZEN CONTENT</p>
+                          <bold>Description: </bold>${description}
+                          <bold>Additional information:</bold>${additional_info}
+                          <p>Image: </p> <img src="/uploads/${image}" alt="Zen_image" height="42" width="42">
+                          <bold>Additional links:</bold>${links}
                         </div>
                       </td>
                     </tr>
@@ -343,7 +345,6 @@ module.exports = {
                 </div>
                 <!--[if mso | IE]>
               </td>
-            
           </tr>
         
                     </table>

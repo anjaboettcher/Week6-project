@@ -9,9 +9,11 @@ const upload = multer({ dest: "./public/uploads" });
 const {checkConnected} = require("../middlewares");
 const User = require("../models/User");
 
+const template = require("../public/javascripts/template");
+
 router.get("/zen-board", checkConnected, (req, res, next) => {
-  let userId = req.user._id;
-  Zen.find({_creator: userId}).then(zens => {
+  let userEmail = req.user.email;
+  Zen.find({emailTo: userEmail}).then(zens => {
       res.render("zen-board", { zens });
   });
 });
@@ -76,7 +78,7 @@ router.get("/create-zen", checkConnected, (req, res, next) => {
 });
 
 router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next) => {
-    console.log(req)
+
   let title = req.body.title;
   let description = req.body.description;
   let additional_info = req.body.additional_info;
@@ -90,14 +92,15 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
   let links = req.body.links;
   let destination_email = req.body.destination;
   let creator = req.user._id;
+  let username = req.user.username
 
   Zen.create({
-    _creator: creator.username,
     title: title,
     description: description,
     additional_info: additional_info,
     image: `/uploads/${image}`,
-    links: links
+    links: links,
+    emailTo: destination_email
   })
     .then(response => {
       let transporter = nodemailer.createTransport({
@@ -107,13 +110,13 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
           pass: process.env.GMAIL_PASS
         }
       });
-
+      console.log("TEST FOR ADDITIONAL INFO!", req.body.additional_info)
       transporter.sendMail({
         from: "My website",
         to: destination_email,
-        subject: `A Zen from ${{creator}}`,
-        text: `wtv ${creator} ${creator} ${creator} ${creator}`,
-        //,"html": ``
+        subject: `A Zen from ${username}`,
+        // text: `Here comes the info about the Zens: ${title} ${description} ${additional_info} /uploads/${image}`,
+        html: template.template(username, title, description, additional_info, image, links)
       });
       res.redirect("/main/zen-history");
     })
@@ -126,50 +129,5 @@ router.get("/resend-zen/:zenId", checkConnected, (req, res, next) => {
     res.render("edit-zen", zen)
   })
 });
-
-router.post("/resend-zen/:zenId", upload.single("image"), checkConnected, (req, res, next) => {
-  let title = req.body.title;
-  let description = req.body.description;
-  let additional_info = req.body.additional_info;
-  if (req.file === undefined) {
-      console.log("IF FILE UNDEFINED",req.file)
-  let image = "../images/default_img.png"
-  } else {
-      console.log("IF FILE !== UNDEFINED",req.file)
-    let image = req.file.filename;
-  }
-  let links = req.body.links;
-  let destination_email = req.body.destination;
-  let zenId = req.params.zenId;
-  
-
-  Zen.findByIdAndUpdate({_id: zenId}, {
-    title: title,
-    description: description,
-    additional_info: additional_info,
-    image: `/uploads/${image}`,
-    links: links
-  }).then(response => {
-      let transporter = nodemailer.createTransport({
-        service: "Gmail",
-        auth: {
-          user: process.env.GMAIL_USER,
-          pass: process.env.GMAIL_PASS
-        }
-      });
-
-      transporter.sendMail({
-        from: "My website",
-        to: destination_email,
-        subject: "A Zen from a Friend",
-        text: "Wtv"
-        //,"html": ``
-      });
-      
-      res.redirect("/main/zen-history");
-    })
-    .catch(err => console.log(err));
-});
-
 
 module.exports = router;

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Karla&display=swap');
+
 html,
 body,
 header,
@@ -24,6 +26,7 @@ h1 {
 
 h5 {
   letter-spacing: 3px;
+  font-family: 'Karla', sans-serif;
 }
 
 .hr-light {
@@ -55,6 +58,12 @@ h5 {
 .sign-up-container {
   min-height: 100vh;
   background-color:#cee2d9;
+  display: flex;
+}
+
+.log-in-container {
+  background-color: #f59a7b;
+  min-height: 100vh;
   display: flex;
 }
 
@@ -99,9 +108,9 @@ footer {
   margin-right: 10px;
 }
 
-// .navbar {
-//   background-color: #e1b129;
-// }
+.navbar {
+  background: none;
+}
 
 .icon-down, .fas {
   position: absolute;
