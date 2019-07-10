@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    {{!-- {{#unless user}} --}}
+    {{#if user}}
         <nav class="navbar navbar-expand-lg scrolling-navbar navbar-light">
           <div class ="container">
               <a class="navbar-brand" href="/"><strong>ZEN</strong></a>
@@ -23,7 +23,11 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
                 <ul class="navbar-nav mr-auto">
+                  <li>
                     <a class="nav-link" href="/main/profile">Profile</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="/main/create-zen">Create</a>
                   </li>
                    <li class="nav-item">
                     <a class="nav-link" href="/main/zen-board">Zen Board</a>
@@ -43,7 +47,7 @@
                 </div>
             </div>
           </nav>
-    {{!-- {{/unless}} --}}
+    {{/if}}
 
     {{{body}}}
   
