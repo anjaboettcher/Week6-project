@@ -11,7 +11,7 @@ const Zen = require("../models/Zen");
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/project-w6', {useNewUrlParser: true})
+  .connect(MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
