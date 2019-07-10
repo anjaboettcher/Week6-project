@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Seeds file that remove all users and create 2 new users
 
 // To execute this seed, run from the root of the project
@@ -11,7 +12,7 @@ const Zen = require("../models/Zen");
 const bcryptSalt = 10;
 
 mongoose
-  .connect(MONGOLAB_GOLD_URI, {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
