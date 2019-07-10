@@ -1,5 +1,6 @@
-<div class="container">
+<div class="main-container">
     <h1>Zen Board</h1>
+    {{#if zens}}
     <div class="row">
         {{#each zens}}
         <div class="col-md-4">
@@ -8,31 +9,14 @@
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.description}}</p>
-                    <p class="card-text"><small class="text-muted">Sent by {{this._creator}} at
+                    <p class="card-text"><small class="text-muted">Sent at
                             {{dateFormat this.created_at}}</small></p>
                 </div>
             </div>
         </div>
         {{/each}}
     </div>
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+    {{else}}
+    <h2>Looks like you don't have any Zens yet... Click <span><a href="/main/create-zen">here</a> </span>and start Zening now!</h2>
+    {{/if}}
 </div>

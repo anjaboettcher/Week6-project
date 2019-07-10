@@ -33,7 +33,7 @@ let users = [
 ]
 
 let zens = [
-  {
+  { 
     title: "Picnic in the park",
     description: "I've done a picnic in Mata de Alvalade, we made a berbecue and all. Wear sun screen"
   }, {

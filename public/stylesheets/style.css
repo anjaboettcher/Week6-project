@@ -33,6 +33,9 @@ h5 {
   height: 100vh;
   position: relative; }
 
+.main-container {
+  margin: 10px; }
+
 .container-inside {
   display: flex;
   justify-content: center; }
@@ -45,7 +48,8 @@ h5 {
 .card-body, .card {
   background-color: white;
   align-self: center;
-  text-align: center; }
+  text-align: center;
+  border: none; }
 
 footer {
   background-color: #26585d; }

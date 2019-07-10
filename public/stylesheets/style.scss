@@ -43,6 +43,10 @@ h5 {
   position: relative;
 }
 
+.main-container {
+  margin: 10px;
+}
+
 .container-inside {
   display: flex;
   justify-content: center;
@@ -58,6 +62,7 @@ h5 {
   background-color: white;
   align-self: center;
   text-align: center;
+  border: none;
 }
 
 footer {
