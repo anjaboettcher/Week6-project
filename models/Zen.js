@@ -9,10 +9,9 @@ const zensSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true, maxlength: 500 },
   links: [String],
-  image: { type: String, default: "../images/default_img.png"},
+  image: { type: String, default: "https://res.cloudinary.com/hanqgr02n/image/upload/v1562866169/zen-images/logo-with-background_lnh1gk.png"},
   additional_info: String,   
   emailTo: String
-  //,isRead: {type:Boolean, default: false}
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -11,6 +11,8 @@ const User = require("../models/User");
 
 const template = require("../public/javascripts/template");
 
+const uploadCloud = require('../bin/cloudinary.js');
+
 router.get("/zen-board", checkConnected, (req, res, next) => {
   let userEmail = req.user.email;
   Zen.find({emailTo: userEmail}).then(zens => {
@@ -19,7 +21,7 @@ router.get("/zen-board", checkConnected, (req, res, next) => {
 });
 
 router.get("/zen-history", checkConnected, (req, res, next) => {
-  Zen.find({}).populate("_creator").then(zens => {
+  Zen.find({_creator: req.user._id}).populate("_creator").then(zens => {
     res.render("zen-history", { zens });
   });
 });
@@ -53,18 +55,6 @@ router.get("/profile", checkConnected, (req,res,next) => {
     })
   });
 
-router.get('/zen-board', checkConnected, (req, res, next) => {
-    Zen.find({}).then(zens =>
-        
-        {res.render('zen-board', {zens})
-    });
-});
-
-router.get('/zen-history', checkConnected, (req, res, next) => {
-    Zen.find({}).then(zens =>
-        {res.render('zen-history', {zens})
-    });
-});
 
 router.get('/delete-zen/:zenId', checkConnected, (req, res, next) => {
     let zenId = req.params.zenId
@@ -77,18 +67,18 @@ router.get("/create-zen", checkConnected, (req, res, next) => {
   res.render("create-zen");
 });
 
-router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next) => {
+router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res, next) => {
 
   let title = req.body.title;
   let description = req.body.description;
   let additional_info = req.body.additional_info;
-  let image = ""
-    if (req.file === undefined) {
-    image = "../images/default_img.png"
-  console.log("image",image)    
-  } else {
-    image = req.file.filename;
-  }
+  let defaultImageUrl = "https://res.cloudinary.com/hanqgr02n/image/upload/v1562866169/zen-images/logo-with-background_lnh1gk.png"
+  let image = defaultImageUrl;
+
+  if (req.file) {
+    image = req.file.secure_url;  
+  } 
+
   let links = req.body.links;
   let destination_email = req.body.destination;
   let creator = req.user._id;
@@ -98,7 +88,7 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
     title: title,
     description: description,
     additional_info: additional_info,
-    image: `/uploads/${image}`,
+    image: image,
     links: links,
     emailTo: destination_email
   })
@@ -110,11 +100,15 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
           pass: process.env.GMAIL_PASS
         }
       });
+
+      if (image === defaultImageUrl) {
+        image = " "
+      }
+
       transporter.sendMail({
         from: "My website",
         to: destination_email,
         subject: `A Zen from ${username}`,
-        // text: `Here comes the info about the Zens: ${title} ${description} ${additional_info} /uploads/${image}`,
         html: template.template(username, title, description, additional_info, image, links)
       });
       res.redirect("/main/zen-history");
