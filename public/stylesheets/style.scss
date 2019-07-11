@@ -14,7 +14,6 @@ header,
   .view {
     height: 100vh;
     scroll-behavior: smooth;
-
   }
 }
 
@@ -111,4 +110,8 @@ footer {
   text-align: center;
   font-size: 30px;
   color: #357e85;
+}
+
+.create-form-row {
+  text-align: left
 }
