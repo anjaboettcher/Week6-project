@@ -141,3 +141,13 @@ footer {
 #no-results-message {
   display: none;
 }
+
+@media (max-width: 740px) {
+  .content-container-with-image {
+    flex-direction: column;
+  }
+}
+
+.content-container-with-image {
+  min-height: auto;
+}
