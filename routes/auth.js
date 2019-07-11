@@ -41,7 +41,6 @@ router.post("/signup", (req, res, next) => {
   }
 
   User.findOne({ email }, "email", (err, user) => {
-    console.log(email)
     if (user !== null) {
       req.flash("error", "You are already a registered user")
       res.redirect("/#sign-up");
