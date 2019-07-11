@@ -41,15 +41,14 @@ router.post("/signup", (req, res, next) => {
   }
 
   User.findOne({ email }, "email", (err, user) => {
-    console.log(email)
-    if (user !== null) {
+    if (email !== null) {
       req.flash("error", "You are already a registered user")
       res.redirect("/#sign-up");
       return;
     }
 
     User.findOne({ username }, "username", (err, user) => {
-      if (user !== null) {
+      if (username !== null) {
         req.flash("error", "This user already exists")
         res.redirect("/#sign-up");
         return;
@@ -82,14 +81,14 @@ router.post("/signup", (req, res, next) => {
       console.log(process.env.GMAIL_USER);
       console.log(process.env.GMAIL_PASS);
 
-      const message = `http://localhost:3000/confirm/${confirmationCode}`
+      const message = `https://zen-ironhack-project.herokuapp.com/confirm/${confirmationCode}`
 
       transporter.sendMail({
           "from": "My website",
           "to": email,
           "subject": "Please activate your ZEN account",
           "text": message,
-          "html": `Please visit the link http://localhost:3000/confirm/${confirmationCode}`
+          "html": `Please visit the link https://zen-ironhack-project.herokuapp.com/confirm/${confirmationCode}`
         })
           
           res.redirect("/validate-your-account");
