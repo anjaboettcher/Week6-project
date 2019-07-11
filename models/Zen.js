@@ -7,7 +7,7 @@ const zensSchema = new Schema({
     ref: 'User'
   },
   title: { type: String, required: true },
-  description: { type: String, required: true, maxlength: 280 },
+  description: { type: String, required: true, maxlength: 500 },
   links: [String],
   image: { type: String, default: "../images/default_img.png"},
   additional_info: String,   

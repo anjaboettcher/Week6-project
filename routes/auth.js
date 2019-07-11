@@ -86,9 +86,9 @@ router.post("/signup", (req, res, next) => {
       transporter.sendMail({
           "from": "My website",
           "to": email,
-          "subject": "Please activate your account",
+          "subject": "Please activate your ZEN account",
           "text": message,
-          "html": `Please go to the link http://localhost:3000/confirm/${confirmationCode}`
+          "html": `Please visit the link http://localhost:3000/confirm/${confirmationCode}`
         })
           
           res.redirect("/validate-your-account");

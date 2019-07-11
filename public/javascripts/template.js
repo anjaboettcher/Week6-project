@@ -271,7 +271,7 @@ module.exports = {
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tr>
                       <td align="center" style="font-size:0px;padding:0px;word-break:break-word;">
-                        <div style="font-family:Roboto, Helvetica, sans-serif;font-size:18px;font-weight:500;line-height:24px;text-align:center;color:#616161;">${title}</div>
+                        <div style="font-family:Karla, Helvetica, sans-serif;font-size:18px;font-weight:500;line-height:24px;text-align:center;color:#616161;">${title}</div>
                       </td>
                     </tr>
                     <tr>
@@ -333,11 +333,14 @@ module.exports = {
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tr>
                       <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                        <div style="font-family:Roboto, Helvetica, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:left;color:#616161;">
-                          <bold>Description: </bold>${description}
-                          <bold>Additional information:</bold>${additional_info}
-                          <p>Image: </p> <img src="/uploads/${image}" alt="Zen_image" height="42" width="42">
-                          <bold>Additional links:</bold>${links}
+                        <div style="font-family:Karla, Helvetica, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:center;color:#616161;">
+                        <div class="card-body">
+                        <bold>Description: </bold>${description}<br>
+                        <bold>Additional information:: </bold><p class="card-text">${additional_info}</p><br>
+                        <p class="card-text"><img src="/uploads/${image}" alt="Zen_image" height="42" width="42"></p><br>
+                        <bold>Links: </bold><p class="card-text">Additional links: </p>${links}<br>
+                        <p class="footer-copyright text-center py-3">You aren't a ZEN user yet? Become a <a href="https://zen-ironhack-project.herokuapp.com">member</a></p>
+                        </div>
                         </div>
                       </td>
                     </tr>

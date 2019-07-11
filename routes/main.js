@@ -110,7 +110,6 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
           pass: process.env.GMAIL_PASS
         }
       });
-      console.log("TEST FOR ADDITIONAL INFO!", req.body.additional_info)
       transporter.sendMail({
         from: "My website",
         to: destination_email,
