@@ -33,7 +33,13 @@ h5 {
 
 .content-container {
   min-height: 100vh;
-  position: relative; }
+  position: relative;
+  display: flex;
+  justify-content: space-between; }
+
+.content-text {
+  display: flex;
+  flex-direction: column; }
 
 .container-inside {
   display: flex;
@@ -45,9 +51,11 @@ h5 {
   display: flex; }
 
 .log-in-container {
-  background-color: #929965;
+  background-color: #f59a7b;
   min-height: 100vh;
-  display: flex; }
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 40px; }
 
 .card-body, .card {
   align-self: center;

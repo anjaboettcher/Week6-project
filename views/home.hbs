@@ -21,45 +21,40 @@
   <main>
 
 
-    <div class="container content-container" id="instructions">
+    <div class="container" id="instructions">
       <div class="row py-5">
         <div class="col-md-12 text-center">
           <h5 class="text-uppercase mb-4 align-middle"><strong>How ZEN works</strong></h5>
-
-<div id="top" style="left: 50px; top: 30px; position: absolute">
+<div class = " content-container">
+<div id="top" style="left: 50px; top: 30px">
           <img src="../images/example1.png" class="img-fluid" alt="Responsive image">
           </div> 
-<div id="under" style="left: 150px; top: 120px; position: absolute">
+<div id="under" style="left: 150px; top: 120px;">
           <img src="../images/example2.png" class="img-fluid" alt="Responsive image">
  </div> 
         </div>
         </div>
-<div class="row py-5"style="left: 650px; top: 150px; position: absolute">
+
+
+<div class = "content-text">
   <h5 class="text-uppercase align-middle"><strong>Share your experiences with a friends in an easier way</strong></h5>
-</div>
-
-<div class="row py-5"style="left: 650px; top: 250px; position: absolute">
   <h5 class="text-uppercase align-middle"><strong>Send experiences to other users in the system</strong></h5>
-</div>
-
-<div class="row py-5"style="left: 650px; top: 350px; position: absolute">
   <h5 class="text-uppercase align-middle"><strong>Send mails to friends</strong></h5>
+
+</div>      
 </div>
-      <div class ="icon icon-down">
-               <a href='#sign-up'><i class ="fas fa-angle-double-down"></i></a>
-        </div>
-        
       </div>
 
 
-
 {{#unless user}}
+
+      <div class ="icon icon-down">
+               <a href='#sign-up'><i class ="fas fa-angle-double-down"></i></a>
+        </div>
       
     </div>
 
     </div>
-
-
     <!-- Material form register -->
     <div class = "sign-up-container" id= "sign-up">
       <div class ="container container-inside">
@@ -93,11 +88,6 @@
                     At least 8 characters and 1 digit
                 </small>
             </div>
-
-             {{!-- <div class="md-form mt-0">
-              <input type="file" class="form-control" name="pictureUrl" placeholder="Your image">
-            </div> --}}
-
             <!-- Sign up button -->
             <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
               <p class="form-text text-muted mb-4"> Do you already have an account?<a href="/login"> Login</a></p>

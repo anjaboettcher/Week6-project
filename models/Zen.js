@@ -10,7 +10,7 @@ const zensSchema = new Schema({
   description: { type: String, required: true, maxlength: 500 },
   links: [String],
   image: { type: String, default: "../images/default_img.png"},
-  additional_info: String,   
+  additional_info:{ type: String, maxlength: 500 },
   emailTo: String
   //,isRead: {type:Boolean, default: false}
 }, {
