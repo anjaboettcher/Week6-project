@@ -9,7 +9,7 @@ const upload = multer({ dest: "./public/uploads" });
 const {checkConnected} = require("../middlewares");
 const User = require("../models/User");
 
-const template = require("../public/javascripts/template");
+const template = require("../public/javascripts/zen-template");
 
 const uploadCloud = require('../bin/cloudinary.js');
 
@@ -72,9 +72,11 @@ router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res
 
   let title = req.body.title;
   let description = req.body.description;
-  let additional_info = req.body.additional_info;
+  let additional = req.body.additional;
   let defaultImageUrl = "https://res.cloudinary.com/hanqgr02n/image/upload/v1562866169/zen-images/logo-with-background_lnh1gk.png"
   let image = defaultImageUrl;
+  let logo = "https://res.cloudinary.com/hanqgr02n/image/upload/v1562866169/zen-images/logo_modsf6.png";
+  let allLinks = " ";
 
   if (req.file) {
     image = req.file.secure_url;  
@@ -89,7 +91,7 @@ router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res
     _creator: creator,
     title: title,
     description: description,
-    additional_info: additional_info,
+    additional: additional,
     image: image,
     links: links,
     emailTo: destination_email
@@ -107,11 +109,18 @@ router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res
         image = " "
       }
 
+      console.log("DEBUG:   ", additional);
+
+      if (links) {
+        allLinks = `<p style="color:#BDBDBD; line-height: 9px"> Here are some helpful links:</p>
+        <p style="color:#BDBDBD; line-height: 9px"> <a href="${links}" style="color: #3498DB;">${links}
+          </a>`;
+      }
       transporter.sendMail({
         from: "My website",
         to: destination_email,
         subject: `A Zen from ${username}`,
-        html: template.template(username, title, description, additional_info, image, links)
+        html: template.zenEmailTemplate(username, title, description, additional, logo, image, allLinks)
       });
       res.redirect("/main/zen-history");
     })

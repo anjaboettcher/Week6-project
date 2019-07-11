@@ -4,7 +4,7 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
-const templates = require("../public/javascripts/template");
+const template = require("../public/javascripts/template");
 
 
 // Bcrypt to encrypt passwords
@@ -87,7 +87,7 @@ router.post("/signup", (req, res, next) => {
           "to": email,
           "subject": "Please activate your ZEN account",
           "text": message,
-          "html": `Please visit the link ${process.env.CONFIRMATION_URL}${confirmationCode}`
+          "html": template.template(message)
         })
           
           res.redirect("/validate-your-account");
