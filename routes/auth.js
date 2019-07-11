@@ -41,14 +41,15 @@ router.post("/signup", (req, res, next) => {
   }
 
   User.findOne({ email }, "email", (err, user) => {
-    if (email !== null) {
+    console.log(email)
+    if (user !== null) {
       req.flash("error", "You are already a registered user")
       res.redirect("/#sign-up");
       return;
     }
 
     User.findOne({ username }, "username", (err, user) => {
-      if (username !== null) {
+      if (user !== null) {
         req.flash("error", "This user already exists")
         res.redirect("/#sign-up");
         return;

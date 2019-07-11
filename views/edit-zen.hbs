@@ -1,41 +1,46 @@
-<div class="main-container">
+{{!-- <div class="main-container">
     <div class="card">
         <div class="card-body ">
-             <h1> Edit and Resend Zen</h1>
+            <h1> Edit and Resend Zen</h1>
             <!-- Form -->
             <form id="form" action="/main/send-zen" method="POST" enctype="multipart/form-data">
-            <div class="form-row create-form-row">
+                <div class="form-row create-form-row">
                     <div class="col">
                         <div class="md-form">
-                            <input type="email" class="form-control" name="destination" placeholder="Destination Email" required><br>
+                            <input type="email" class="form-control" name="destination" placeholder="Destination Email"
+                                required><br>
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <div class="md-form">
-                            <input type="text" class="form-control" name="title" value="{{title}}" placeholder="Title" required><br>
+                            <input type="text" class="form-control" name="title" value="{{title}}" placeholder="Title"
+                                required><br>
                         </div>
                     </div>
                 </div>
                 <div class="md-form mt-0">
-                    <input type="text" class="form-control" name="description" value="{{description}}" placeholder="Description" required><br>
+                    <input type="text" class="form-control" name="description" value="{{description}}"
+                        placeholder="Description" required><br>
                 </div>
                 <div class="custom-file">
-                    
+
                     <input type="file" class="form-control-file custom-file-input" id="editCustomFile" name="image">
                     <label class="custom-file-label" for="customFile">{{imageNameFormat image}}</label>
 
                 </div>
-                
+
                 <br><br>
                 <div class="md-form mt-0">
-                    <input type="text" class="form-control" name="additional-info" value="{{additional_info}}" placeholder="Additional Info"><br>
+                    <input type="text" class="form-control" name="additional-info" value="{{additional_info}}"
+                        placeholder="Additional Info"><br>
                 </div>
                 {{#each links}}
                 <div class="input-group md-form mt-0">
                     <input class="form-control" name="links[]" type="text" value="{{this}}" />
-                    <button class="btn btn-info btn-rounded waves-effect z-depth-0" type="button" onclick="add_link_field()">
+                    <button class="btn btn-info btn-rounded waves-effect z-depth-0" type="button"
+                        onclick="add_link_field()">
                         <span>+</span>
                     </button>
                 </div>
@@ -44,8 +49,91 @@
                 </div>
                 {{/each}}
                 <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
-                type="submit">Send</button>
+                    type="submit">Send</button>
             </form>
         </div>
 
+    </div> --}}
+
+    <div class="log-in-container" id="log-in">
+    <div class="container container-inside">
+        <div class="card">
+            <div class="card-body px-lg-6 rounded mt-6">
+                <h5 class="info-color white-text py-2">Edit and Resend Zen</h5>
+                <!-- Form -->
+                <form id="form" action="/main/send-zen" method="POST" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="md-form text-left">
+                                <small><label class="form-label" for="destination">Send to: </label></small>
+                                <input type="email" class="form-control" name="destination"
+                                    placeholder="yourFriendEmail@ironhack.com"><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="md-form text-left">
+                                <small><label class="form-label" for="title">Title:</label></small>
+                                <input type="text" class="form-control" name="title" value="{{title}}"
+                                    placeholder="Meditation Workshop"><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md-form mt-0 text-left">
+                        <small><label class="form-label" for="description">Description:</label></small>
+                        <textarea rows="4" cols="50" type="text" class="form-control" name="description"
+                            placeholder="I never liked meditation but this methodology worked for me!">{{description}}</textarea><br>
+                    </div>
+
+                    <div class="text-left">
+                        <small><label class="form-label" for="image">Upload Image:</label></small>
+                        <div class="md-form mt-0">
+                        </div>
+
+                        <div class="custom-file">
+                            <input type="file" class="form-control-file custom-file-input" id="createCustomFile"
+                                name="image">
+                            <label class="custom-file-label" for="customFile"></label>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="md-form mt-0 text-left">
+
+                        <small><label class="form-label" for="additional-info">Additional Information:</label></small>
+                        <div class="md-form mt-0">
+                            <input type="text" class="form-control" name="additional-info" value="{{additional_info}}"
+                                placeholder="Use my name and you'll have a friendly discount!"><br>
+                        </div>
+
+                    </div>
+
+                     {{#each links}}
+                    <div class="md-form mt-0 text-left">
+                        <small><label class="form-label" for="links[]">Add links:</label></small>
+                        <div class="input-group md-form mt-0">
+                            <input class="form-control" name="links[]" type="text" placeholder="https:// " />
+                            <button class="btn btn-info btn-rounded waves-effect z-depth-0" type="button" value="{{this}}"
+                                onclick="add_link_field()">
+                                <span>+</span>
+                            </button>
+                        </div>
+                    </div>
+                    {{/each}}
+                    <br>
+                    <div class="link_fields">
+                    </div>
+
+                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+                        type="submit">Send</button>
+                </form>
+
+                {{#if message }}
+                <div class="alert alert-danger">{{ message }}</div>
+                {{/if}}
+            </div>
+        </div>
     </div>
+</div>
+</div>

@@ -336,13 +336,8 @@ module.exports = {
                         <div style="font-family:Karla, Helvetica, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:center;color:#616161;">
                         <div class="card-body">
                         <bold>Description: </bold>${description}<br>
-<<<<<<< HEAD
                         <bold>Additional information:: </bold><p class="card-text">${additional_info}</p><br>
                         <p class="card-text"><img src="${image}" onerror="this.style.display='none'" height="420" width="420"></p><br>
-=======
-                        <p class="card-text"><img src="/uploads/${image}" alt="Zen_image" height="42" width="42"></p><br>
-                        <bold>Additional information: </bold><p class="card-text">${additional_info}</p><br>
->>>>>>> 3d437f54b6d60969f052c200b7c80d9b81179243
                         <bold>Links: </bold><p class="card-text">Additional links: </p>${links}<br>
                         <p class="footer-copyright text-center py-3">You aren't a ZEN user yet? Become a <a href="https://zen-ironhack-project.herokuapp.com">member</a></p>
                         </div>

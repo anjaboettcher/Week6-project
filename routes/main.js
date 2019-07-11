@@ -21,6 +21,7 @@ router.get("/zen-board", checkConnected, (req, res, next) => {
 });
 
 router.get("/zen-history", checkConnected, (req, res, next) => {
+  console.log(req.user._id)
   Zen.find({_creator: req.user._id}).populate("_creator").then(zens => {
     res.render("zen-history", { zens });
   });
@@ -85,6 +86,7 @@ router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res
   let username = req.user.username
 
   Zen.create({
+    _creator: creator,
     title: title,
     description: description,
     additional_info: additional_info,
@@ -119,6 +121,7 @@ router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res
 router.get("/resend-zen/:zenId", checkConnected, (req, res, next) => {
   let zenId = req.params.zenId;
   Zen.findById(zenId).then(zen => {
+    console.log(zen)
     res.render("edit-zen", zen)
   })
 });
