@@ -35,3 +35,41 @@ if (editFileInput) {
       this.nextElementSibling.innerHTML=`${this.nextElementSibling.innerHTML.substring(7,40)}`;
   }
 }
+
+let searchInput = document.querySelector("#search-input");
+let searchForm = document.querySelector("#search-form");
+let cardBody = document.querySelectorAll(".card-body"); //all card-body elements 
+let container = document.querySelector(".container");
+let noResultsMessage = document.querySelector("#no-results-message")
+
+searchForm.onkeydown = e => {
+  let matches = [];
+
+  if (e.keyCode === 13 ){
+    e.preventDefault();
+    
+    if (searchInput.value) {
+      cardBody.forEach( (element) => {
+        for(let i=0; i <= element.children.length-1; i++) { //go through all children of each element
+          if((element.children[i].innerText).includes(searchInput.value)) { 
+            matches.push(element);
+        } 
+      } 
+    })
+
+    cardBody.forEach( (element) => {
+        if (!matches.includes(element)) {
+          element.closest('.col-md-4').style.display = "none";
+        } else {
+          element.closest('.col-md-4').style.display = "flex";
+        }
+      }
+    )}
+    
+    if (matches.length === 0) {
+      noResultsMessage.style.display = "block";
+    } else {
+      noResultsMessage.style.display = "none";
+    }
+  }
+}

@@ -9,6 +9,8 @@ const upload = multer({ dest: "./public/uploads" });
 const {checkConnected} = require("../middlewares");
 const User = require("../models/User");
 
+const template = require("../public/javascripts/template");
+
 router.get("/zen-board", checkConnected, (req, res, next) => {
   let userEmail = req.user.email;
   Zen.find({emailTo: userEmail}).then(zens => {
@@ -76,16 +78,23 @@ router.get("/create-zen", checkConnected, (req, res, next) => {
 });
 
 router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next) => {
+
   let title = req.body.title;
   let description = req.body.description;
   let additional_info = req.body.additional_info;
-  let image = req.file.filename;
+  let image = ""
+    if (req.file === undefined) {
+    image = "../images/default_img.png"
+  console.log("image",image)    
+  } else {
+    image = req.file.filename;
+  }
   let links = req.body.links;
   let destination_email = req.body.destination;
   let creator = req.user._id;
+  let username = req.user.username
 
   Zen.create({
-    _creator: creator,
     title: title,
     description: description,
     additional_info: additional_info,
@@ -101,13 +110,13 @@ router.post("/send-zen", upload.single("image"), checkConnected, (req, res, next
           pass: process.env.GMAIL_PASS
         }
       });
-
+      console.log("TEST FOR ADDITIONAL INFO!", req.body.additional_info)
       transporter.sendMail({
         from: "My website",
         to: destination_email,
-        subject: "A Zen from a Friend",
-        text: "Wtv"
-        //,"html": ``
+        subject: `A Zen from ${username}`,
+        // text: `Here comes the info about the Zens: ${title} ${description} ${additional_info} /uploads/${image}`,
+        html: template.template(username, title, description, additional_info, image, links)
       });
       res.redirect("/main/zen-history");
     })

@@ -21,28 +21,29 @@
   <main>
 
 
-    <div class="container content-container">
+    <div class="container content-container" id="instructions">
       <div class="row py-5">
         <div class="col-md-12 text-center">
-          <h2 id="instructions">How ZEN works</h2>
+          <h5 class="text-uppercase mb-4 align-middle"><strong>How ZEN works</strong></h5>
         </div>
       </div>
 
+{{#unless user}}
       <div class ="icon icon-down">
-               <a href='#sign-up'><i class ="fas fa-angle-double-down "></i></a>
+               <a href='#sign-up'><i class ="fas fa-angle-double-down"></i></a>
         </div>
     </div>
 
     </div>
 
-{{#unless user}}
+
     <!-- Material form register -->
     <div class = "sign-up-container" id= "sign-up">
       <div class ="container container-inside">
 <div class="card">
 
     <!--Card content-->
-    <div class="card-body">
+    <div class="card-body rounded">
           <h5 class="info-color white-text py-2">
         <strong>Sign up</strong>
     </h5>
@@ -70,6 +71,10 @@
                 </small>
             </div>
 
+             {{!-- <div class="md-form mt-0">
+              <input type="file" class="form-control" name="pictureUrl" placeholder="Your image">
+            </div> --}}
+
             <!-- Sign up button -->
             <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
               <p class="form-text text-muted mb-4"> Do you already have an account?<a href="/login"> Login</a></p>
@@ -86,10 +91,8 @@
 </div>
   </main>
 
-
 <footer>
-      <div class="footer-copyright text-center py-3 text-white">© 2019 Copyright:
-        <a href="" class= "text-white">Created with ♡ @ Ironhack</a>
+        <h5 class="footer-copyright text-center py-3 text-white">© 2019 Copyright: <a href="https://www.ironhack.com/">Created with ♡ @ Ironhack</a></h5>
       </div>
     </footer>
 </body>
