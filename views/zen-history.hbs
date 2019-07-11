@@ -2,6 +2,7 @@
     <div class ="container">
 
     <h5 class ="text-center">Zen History</h5>
+     <small id="no-results-message">No results.</small>
     <div class="alert alert-secondary mt-4" role="alert">
   Here you will see all Zens you have previously created!
 </div>
@@ -15,7 +16,6 @@
                     <span aria-hidden="true" data-toggle="modal"
                         data-target="#exampleModal{{this._id}}">&times;</span>
                 </button>
-
                 <img src="{{this.image}}" class = "zen-image" alt="">
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
@@ -28,7 +28,6 @@
                 </div>
             </div>
         </div>
-
         <div class="modal fade" id="exampleModal{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
