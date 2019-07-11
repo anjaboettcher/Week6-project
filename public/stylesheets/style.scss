@@ -43,12 +43,9 @@ h5 {
   min-height: 100vh;
   position: relative;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-}
-
-.content-text {
-  display: flex;
-  flex-direction: column;
 }
 
 .container-inside {
@@ -78,6 +75,7 @@ h5 {
 
 footer {
   background-color: #26585d;
+  color: white;
 }
 
 .card > img {

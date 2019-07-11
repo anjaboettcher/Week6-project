@@ -6,14 +6,14 @@
       style="background-image: url('../images/background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
       <div class="mask rgba-black-light ">
         <div class="container header-container">
-            <div class="col-md-12 mb-4 text-center my-auto">
-              <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>ZEN</strong></h1>
-              <hr class="hr-light">
-              <h5 class="text-uppercase mb-4 align-middle"><strong>Find your inner ZEN</strong></h5>
-            </div>
-            <div class ="icon icon-down">
-               <a href='#instructions'><i class ="fas fa-angle-double-down "></i></a>
-              </div>
+          <div class="col-md-12 mb-4 text-center my-auto">
+            <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>ZEN</strong></h1>
+            <hr class="hr-light">
+            <h5 class="text-uppercase mb-4 align-middle"><strong>Find your inner ZEN</strong></h5>
+          </div>
+          <div class="icon icon-down">
+            <a href='#instructions'><i class="fas fa-angle-double-down "></i></a>
+          </div>
         </div>
       </div>
     </div>
@@ -23,91 +23,94 @@
 
     <div class="container" id="instructions">
       <div class="row py-5">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 mb-4 text-center my-auto">
           <h5 class="text-uppercase mb-4 align-middle"><strong>How ZEN works</strong></h5>
-<div class = " content-container">
-<div id="top" style="left: 50px; top: 30px">
-          <img src="../images/example1.png" class="img-fluid" alt="Responsive image">
-          </div> 
-<div id="under" style="left: 150px; top: 120px;">
-          <img src="../images/example2.png" class="img-fluid" alt="Responsive image">
- </div> 
+          <div class="content-container">
+            <div class="form-row">
+              <div class="col-md-12 mb-4">
+                <img src="../images/examples.png" class="img-fluid" alt="Responsive image">
+              </div>
+            </div>
+            <div class="content-text text-left">
+              <div class="form-row">
+                <div class="col-md-12 mb-4">
+                  <h5 class="text-uppercase text-reponsive align-middle ml-4 mb-4"><strong>Share your experiences with friends in an easier way</strong></h5>
+                  <h5 class="text-uppercase text-reponsive align-middle ml-4 mb-4"><strong>Send experiences to other users in the system</strong></h5>
+                  <h5 class="text-uppercase text-reponsive align-middle ml-4 mb-4"><strong>Send mails to friends</strong></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="icon icon-down">
+            <a href='#sign-up'><i class="fas fa-angle-double-down"></i></a>
+          </div>
         </div>
-        </div>
-
-
-<div class = "content-text">
-  <h5 class="text-uppercase align-middle"><strong>Share your experiences with a friends in an easier way</strong></h5>
-  <h5 class="text-uppercase align-middle"><strong>Send experiences to other users in the system</strong></h5>
-  <h5 class="text-uppercase align-middle"><strong>Send mails to friends</strong></h5>
-
-</div>      
-</div>
       </div>
+    </div>
 
+    {{#unless user}}
 
-{{#unless user}}
-
-      <div class ="icon icon-down">
-               <a href='#sign-up'><i class ="fas fa-angle-double-down"></i></a>
-        </div>
-      
     </div>
 
     </div>
     <!-- Material form register -->
-    <div class = "sign-up-container" id= "sign-up">
-      <div class ="container container-inside">
-<div class="card">
+    <div class="sign-up-container" id="sign-up">
+      <div class="container container-inside">
+        <div class="card">
 
-    <!--Card content-->
-    <div class="card-body rounded">
-          <h5 class="info-color white-text py-2">
-        <strong>Sign up</strong>
-    </h5>
-        <!-- Form -->
-        <form id="form" action="/signup" method="POST" style="color: #757575;">
-            <div class="form-row">
+          <!--Card content-->
+          <div class="card-body rounded">
+            <h5 class="info-color white-text py-2">
+              <strong>Sign up</strong>
+            </h5>
+            <!-- Form -->
+            <form id="form" action="/signup" method="POST" style="color: #757575;">
+              <div class="form-row">
                 <div class="col">
-                    <!-- Username -->
-                    <div class="md-form">
-                        <input type="text" class="form-control" name="username" placeholder="Your username"><br>
-                    </div>
+                  <!-- Username -->
+                  <div class="md-form">
+                    <input type="text" class="form-control" name="username" placeholder="Your username"><br>
+                  </div>
                 </div>
-            </div>
+              </div>
 
-            <!-- E-mail -->
-            <div class="md-form mt-0">
+              <!-- E-mail -->
+              <div class="md-form mt-0">
                 <input type="text" class="form-control" name="email" placeholder="Your email"><br>
-            </div>
+              </div>
 
-            <!-- Password -->
-            <div class="md-form">
+              <!-- Password -->
+              <div class="md-form">
                 <input type="password" class="form-control" name="password" placeholder="********"><br>
                 <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                    At least 8 characters and 1 digit
+                  At least 8 characters and 1 digit
                 </small>
-            </div>
-            <!-- Sign up button -->
-            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+              </div>
+              <!-- Sign up button -->
+              <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign
+                in</button>
               <p class="form-text text-muted mb-4"> Do you already have an account?<a href="/login"> Login</a></p>
-        </form>
-  {{/unless}}      
+            </form>
+            {{/unless}}
 
-  {{#if message }}
-  {{!-- add css --}}
-    <div class="alert alert-danger">{{ message }}</div>
-  {{/if}}
+            {{#if message }}
+            {{!-- add css --}}
+            <div class="alert alert-danger">{{ message }}</div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-</div>
-</div>
   </main>
 
-<footer>
-        <p class="footer-copyright text-center py-3 text-white">© 2019 Copyright: <a href="https://www.ironhack.com/">Created with ♡ @ Ironhack</a></p>
-      </div>
-    </footer>
+  <footer>
+    <div class="footer-copyright text-center py-3">© 2019 Copyright |
+      <a href="https://mdbootstrap.com/education/bootstrap/">Created with ♡ @ Ironhack</a>
+    </div>
+  </footer>
+
+
+
 </body>
 
 </html>
