@@ -1,16 +1,18 @@
 <div class="main-container ">
     <div class ="container">
-
     <h5 class ="text-center">Zen History</h5>
+                    <form class="form-inline" id="search-form">
+                  <div class="md-form my-0">
+                    <input id="search-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  </div>
+                </form>
+                <br>
      <small id="no-results-message">No results.</small>
-    <div class="alert alert-secondary mt-4" role="alert">
-  Here you will see all Zens you have previously created!
-</div>
     {{#if zens}}
     <div class="row card-columns">
         {{#each zens}}
         <div class="col-md-4 mb-4 mt-4">
-            <div class="card text-center rounded h-100">
+            <div class="card text-center rounded h-100  no-border">
                 <div class="card h-100">
                 <button type="button" class="close close-card" aria-label="Close">
                     <span aria-hidden="true" data-toggle="modal"
@@ -20,6 +22,9 @@
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.description}}</p>
+                    
+                     <p class="card-text">{{this.additional_info}}</p>
+                    <p class="card-text">{{this.links}}</p>
                     <p class="card-text"><small class="text-muted">Created at
                             {{dateFormat this.created_at}}</small></p>
                             <div class="card-footer no-border">
@@ -47,7 +52,11 @@
         {{/each}}
     </div>
     {{else}}
-    <h2> Click <span><a href="/main/create-zen">here</a> </span>and start Zening now!</h2>
+
+<div class="alert alert-info mt-4 text-center" role="alert">
+    <h5>Here you will see all Zens you have previously created! Click <span><a href="/main/create-zen">here</a> </span>to start Zening now!</h5>
+
+</div>
     {{/if}}
 </div>
 </div>
