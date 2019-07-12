@@ -11,10 +11,11 @@
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <hr>
-                    <p class="card-text">{{this.description}}</p>
-                    <p class="card-text">{{this.additional_info}}</p>
-                    <p class="card-text">{{this.links}}</p>
+                    <p class="card-text">{{this.description}}</p><br>
+                    <p class="card-text">{{this.additional}}</p><br>
+                    <p class="card-text">{{this.links}}</p><br>
                      <div class="card-footer no-border">
+                         <hr>
                     <p class="card-text"><small class="text-muted">Sent by {{this._creator.username}} at {{dateFormat this.created_at}}</small></p>
                     </div>
                 </div>
