@@ -122,13 +122,16 @@ router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res
         image = " "
       }
 
-      console.log("DEBUG:   ", additional);
+      console.log("DEBUG:   ", links, links.length);
 
-      if (links) {
-        allLinks = `<p style="color:#BDBDBD; line-height: 9px"> Here are some helpful links:</p>
+      links = links.filter((elemnt) => {return elemnt !== ''});
+
+      if (links.length > 0) {
+        allLinks = `<p style="font-family:Roboto, Helvetica, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:left;color:#616161;"> Here are some helpful links:</p>
         <p style="color:#BDBDBD; line-height: 9px"> <a href="${links}" style="color: #3498DB;">${links}
           </a>`;
       }
+
       transporter.sendMail({
         from: "My website",
         to: destination_email,
