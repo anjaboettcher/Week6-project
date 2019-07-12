@@ -26,12 +26,6 @@ let users = [
     email: "marianamv112@gmail.com",
     password: bcrypt.hashSync("12345678", bcrypt.genSaltSync(bcryptSalt)),
     status: "Active"
-  },
-  {
-    username: "Anja",
-    email: "anjaverenaboettcher@gmail.com",
-    password: bcrypt.hashSync("anja", bcrypt.genSaltSync(bcryptSalt)),
-    status: "Active"
   }
 ]
 

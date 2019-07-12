@@ -1,6 +1,14 @@
 <div class="main-container">
     <div class = "container">
     <h5 class="text-center">Zen Board</h5>
+    <form class="form-inline" id="search-form">
+                  <div class="md-form my-0 search-input">
+                    
+                    <input id="search-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  </div>
+                </form>
+                <br>
+                 <small id="no-results-message">No results.</small>
 
     {{#if zens}}
     <div class="row">
