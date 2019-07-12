@@ -52,7 +52,7 @@ let zens = [
     title: "Hike a local mountain with a guide",
     description: "Location: Tokyo. Learn the history of Mount Takao with an experient guide. There are no words to describe the beauty here, in any season, even winter. Enjoy nature along with Japanese spiritual and traditional culture.",
     image: "https://res.cloudinary.com/hanqgr02n/image/upload/v1562868690/zen-images/511c390b-c2fd-4958-9aff-7ab51136845b_puhzee.jpg",
-    additional_info: "Bring water, walking shoes, and a hand towel. Lunch and travel costs are not included. If it is raining, bring rain gear. We can also visit the hot springs.",
+    additional: "Bring water, walking shoes, and a hand towel. Lunch and travel costs are not included. If it is raining, bring rain gear. We can also visit the hot springs.",
     emailTo: "marianamv112@gmail.com"
   
   }
