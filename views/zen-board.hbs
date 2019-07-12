@@ -1,6 +1,14 @@
 <div class="main-container">
     <div class = "container">
     <h5 class="text-center">Zen Board</h5>
+    <form class="form-inline" id="search-form">
+                  <div class="md-form my-0 search-input">
+                    
+                    <input id="search-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  </div>
+                </form>
+                <br>
+                 <small id="no-results-message">No results.</small>
 
     {{#if zens}}
     <div class="row">
@@ -11,9 +19,9 @@
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <hr>
-                    <p class="card-text">{{this.description}}</p><br>
-                    <p class="card-text">{{this.additional}}</p><br>
-                    <p class="card-text">{{this.links}}</p><br>
+                    <p class="card-text">{{this.description}}</p>
+                    <p class="card-text">{{this.additional}}</p>
+                    <p class="card-text">{{this.links}}</p><br><br>
                      <div class="card-footer no-border">
                          <hr>
                     <p class="card-text"><small class="text-muted">Sent by {{this._creator.username}} at {{dateFormat this.created_at}}</small></p>

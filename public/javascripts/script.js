@@ -66,7 +66,7 @@ searchForm.onkeydown = e => {
       }
     )}
     
-    if (matches.length === 0) {
+    if (searchInput.value && matches.length === 0) {
       noResultsMessage.style.display = "block";
     } else {
       noResultsMessage.style.display = "none";

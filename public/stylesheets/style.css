@@ -95,7 +95,7 @@ footer {
 .modal-links a {
   margin-right: 10px; }
 
-.icon-down, .fas {
+.icon-down .fa-angle-double-down {
   position: absolute;
   bottom: 20px;
   left: 0;
@@ -122,5 +122,17 @@ footer {
 
 .content-container-with-image {
   min-height: auto; }
+
+@media (max-width: 40em) {
+  .nav-username {
+    display: none; } }
+
+@media (max-width: 40em) {
+  .search-input {
+    padding-top: 10px;
+    margin: auto; } }
+
+.modal-links {
+  color: #007bff; }
 
 /*# sourceMappingURL=style.css.map */
