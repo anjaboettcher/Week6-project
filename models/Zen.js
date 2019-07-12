@@ -11,7 +11,7 @@ const zensSchema = new Schema({
   links: [String],
   image: { type: String, default: "https://res.cloudinary.com/hanqgr02n/image/upload/v1562866169/zen-images/logo-with-background_lnh1gk.png"},
   additional_info:{ type: String, maxlength: 500 },
-  emailTo: String
+  emailTo: { type: String, required: true },
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -3,7 +3,6 @@ const router = express.Router();
 const Zen = require("../models/Zen");
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
-
 const multer = require("multer");
 const upload = multer({ dest: "./public/uploads" });
 
@@ -78,7 +77,6 @@ router.get("/create-zen", checkConnected, (req, res, next) => {
 });
 
 router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res, next) => {
-
   let title = req.body.title;
   let description = req.body.description;
   let additional = req.body.additional;
@@ -86,6 +84,12 @@ router.post("/send-zen",  uploadCloud.single('image') ,checkConnected, (req, res
   let image = defaultImageUrl;
   let logo = "https://res.cloudinary.com/hanqgr02n/image/upload/v1562866169/zen-images/logo_modsf6.png";
   let allLinks = " ";
+
+//   if (description.length >= 500 || additional.length >= 500) {
+//     req.flash("error", "Max. 500 characters!")
+//     res.redirect("/create-zen");
+//     return;
+//   }
 
   if (req.file) {
     image = req.file.secure_url;  
