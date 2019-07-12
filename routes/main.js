@@ -14,7 +14,7 @@ const uploadCloud = require('../bin/cloudinary.js');
 
 router.get("/zen-board", checkConnected, (req, res, next) => {
   let userEmail = req.user.email;
-  Zen.find({emailTo: userEmail, _creator: req.user._id})
+  Zen.find({emailTo: userEmail})
   .populate("_creator")
   .then(zens => {
       res.render("zen-board", { zens });
