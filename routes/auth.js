@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
 const templates = require("../public/javascripts/template");
+
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -41,15 +43,15 @@ router.post("/signup", (req, res, next) => {
   }
 
   User.findOne({ email }, "email", (err, user) => {
-    if (email !== null) {
+    if (user !== null) {
       req.flash("error", "You are already a registered user")
       res.redirect("/#sign-up");
       return;
     }
 
     User.findOne({ username }, "username", (err, user) => {
-      if (username !== null) {
-        req.flash("error", "This user already exists")
+      if (user !== null) {
+        req.flash("error", "This usersame already exists")
         res.redirect("/#sign-up");
         return;
       }  
@@ -78,17 +80,14 @@ router.post("/signup", (req, res, next) => {
         }
       });
 
-      console.log(process.env.GMAIL_USER);
-      console.log(process.env.GMAIL_PASS);
-
-      const message = `https://zen-ironhack-project.herokuapp.com/confirm/${confirmationCode}`
+      const message = `${process.env.CONFIRMATION_URL}${confirmationCode}`
 
       transporter.sendMail({
           "from": "My website",
           "to": email,
           "subject": "Please activate your ZEN account",
           "text": message,
-          "html": `Please visit the link https://zen-ironhack-project.herokuapp.com/confirm/${confirmationCode}`
+          "html": `Please visit the link ${process.env.CONFIRMATION_URL}${confirmationCode}`
         })
           
           res.redirect("/validate-your-account");
