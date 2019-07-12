@@ -152,3 +152,9 @@ footer {
 .content-container-with-image {
   min-height: auto;
 }
+
+@media (max-width: 40em) {
+  .nav-username {
+  display: none;
+  }
+}

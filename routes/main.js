@@ -4,7 +4,6 @@ const Zen = require("../models/Zen");
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
-const upload = multer({ dest: "./public/uploads" });
 
 const {checkConnected} = require("../middlewares");
 
