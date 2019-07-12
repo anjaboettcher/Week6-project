@@ -57,7 +57,8 @@ hbs.registerHelper('ifUndefined', (value, options) => {
 });
 
 hbs.registerHelper('dateFormat', (date) => {
-  return " " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() ;
+  // return " " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() ;
+  return " " + date.toISOString().split('T')[0];
 })
 
 hbs.registerHelper('imageNameFormat', (imagePath) => {

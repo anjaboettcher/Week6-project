@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const Zen = require("../models/Zen");
+const User = require("../models/User");
 const nodemailer = require("nodemailer");
 
 const multer = require("multer");
 const upload = multer({ dest: "./public/uploads" });
 
 const {checkConnected} = require("../middlewares");
-const User = require("../models/User");
+
 
 const template = require("../public/javascripts/zen-template");
 
@@ -15,16 +16,24 @@ const uploadCloud = require('../bin/cloudinary.js');
 
 router.get("/zen-board", checkConnected, (req, res, next) => {
   let userEmail = req.user.email;
-  Zen.find({emailTo: userEmail}).then(zens => {
+  Zen.find({emailTo: userEmail, _creator: req.user._id})
+  .populate("_creator")
+  .then(zens => {
       res.render("zen-board", { zens });
-  });
+  })
+  .catch(next)
 });
 
 router.get("/zen-history", checkConnected, (req, res, next) => {
   console.log(req.user._id)
-  Zen.find({_creator: req.user._id}).populate("_creator").then(zens => {
+  Zen.find({_creator: req.user._id}).
+  populate("_creator").then(zens => {
+      if (!zens){
+          return res.status(404).render('not-found');
+      }
     res.render("zen-history", { zens });
-  });
+  })
+  .catch(next)
 });
 
 router.get("/delete-zen/:zenId", checkConnected, (req, res, next) => {
