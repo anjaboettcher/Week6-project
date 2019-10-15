@@ -25,8 +25,8 @@ To send a Zen to a friend is not required the friend is registered in the app. H
 - Email service using Nodemailer
 - Image storage using Cloudinary
 
-##Improvements to do, bugs and limitations
+## Improvements to do, bugs and limitations
 The user needs to have the email of his friends to send them Zens.
 
-##Future Work
+## Future Work
 Develop a solution to connect users like in a social network. This way, the user wouldn't require the email of his friends anymore, he could just send Zens to his app friends. However, we would like to keep the option to send Zens to emails outside the app because that is a good way to reach new users. 
